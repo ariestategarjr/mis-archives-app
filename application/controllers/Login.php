@@ -22,8 +22,9 @@ class Login extends CI_Controller
         );
         // echo $where['username'] . $where['password'];
 
-        $check = $this->m_login->check_login('admin', $where)->num_rows();
+        $check = $this->m_login->get_account('account', $where)->num_rows();
         // echo $check;
+        $result = $this->m_login->get_account('account', $where)->result();
 
         if($check > 0) {
             $data_session = array(
@@ -32,7 +33,23 @@ class Login extends CI_Controller
             );
             $this->session->set_userdata($data_session);
 
-            redirect(base_url('dashboard'));
+            foreach ($result as $row)
+            {
+                if($row->level === "administrator") {
+                    redirect(base_url('dashboard'));
+                } else {
+                    echo "halo operator";
+                }
+            }
+
+            // $data_session = array(
+            //     'name' => $username,
+            //     'status' => "login",
+            // );
+            // $this->session->set_userdata($data_session);
+
+            // echo "selamat datang! ";
+            // redirect(base_url('dashboard'));
         } else {
             echo "username dan password salah! ";
         }
