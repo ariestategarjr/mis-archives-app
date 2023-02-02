@@ -36,9 +36,9 @@ class Login extends CI_Controller
             foreach ($result as $row)
             {
                 if($row->level === "administrator") {
-                    redirect(base_url('dashboard'));
+                    redirect(base_url('administrator/dashboard'));
                 } else {
-                    echo "halo operator";
+                    redirect(base_url('operator/dashboard'));
                 }
             }
 
@@ -51,7 +51,7 @@ class Login extends CI_Controller
             // echo "selamat datang! ";
             // redirect(base_url('dashboard'));
         } else {
-            echo "username dan password salah! ";
+            redirect(base_url('login'));
         }
     }
 
