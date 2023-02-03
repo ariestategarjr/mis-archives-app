@@ -20,11 +20,10 @@ class Login extends CI_Controller
             'username' => $username,
             'password' => $password,
         );
-        // echo $where['username'] . $where['password'];
 
-        $check = $this->m_login->get_account('account', $where)->num_rows();
-        // echo $check;
-        $result = $this->m_login->get_account('account', $where)->result();
+        $result = $this->m_login->get_account('account', $where); 
+        $check = $result->num_rows();
+        $datas = $result->result();
 
         if($check > 0) {
             $data_session = array(
@@ -33,9 +32,9 @@ class Login extends CI_Controller
             );
             $this->session->set_userdata($data_session);
 
-            foreach ($result as $row)
+            foreach ($datas as $data)
             {
-                if($row->level === "administrator") {
+                if($data->level === "administrator") {
                     redirect(base_url('administrator/dashboard'));
                 } else {
                     redirect(base_url('operator/dashboard'));
@@ -48,7 +47,6 @@ class Login extends CI_Controller
             // );
             // $this->session->set_userdata($data_session);
 
-            // echo "selamat datang! ";
             // redirect(base_url('dashboard'));
         } else {
             redirect(base_url('login'));
