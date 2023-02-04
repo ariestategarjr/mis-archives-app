@@ -1,14 +1,148 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <div class="content">
-                        <button>Add New Customer</button>
-                        <table>
-                            <!-- ...... -->
-                        </table>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addModal">
+                        Add New Customer
+                    </button>
+
+                    <!-- Table Customer -->
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>No</th>
+                            <th>Id</th>
+                            <th>NIK</th>
+                            <th>Nama</th>
+                            <th>Alamat</th>
+                            <th>Tanggal Lahir</th>
+                            <th>Aksi</th>
+                        </tr>
+                        <?php $no = 1; ?>
+                        <?php foreach($customers as $customer) { ?>
+                        <tr>
+                            <td><?php echo $no++ ?></td>
+                            <td><?php echo $customer->id_customer ?></td>
+                            <td><?php echo $customer->nik ?></td>
+                            <td><?php echo $customer->nama_customer ?></td>
+                            <td><?php echo $customer->alamat ?></td>
+                            <td><?php echo $customer->tanggal_lahir ?></td>
+                            <td colspan="2">
+                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal">Edit</button>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                            </td>
+                        </tr>
+                        <?php } ?>
+                    </table>
+
+
+                    <!-- Add Modal Customer -->
+                    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form action="<?php echo base_url('administrator/customer/add_customer'); ?>" method="post">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Insert Customer</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="customerId">Id</label>
+                                        <input type="text" class="form-control" id="idCustomer" name="id-customer">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="customerNik">NIK</label>
+                                        <input type="text" class="form-control" id="nikCustomer" name="nik">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="customerName">Nama</label>
+                                        <input type="text" class="form-control" id="customerName" name="nama-customer">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="customerAddress">Alamat</label>
+                                        <input type="text" class="form-control" id="customerAddress" name="alamat">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="customerDate">Tanggal Lahir</label>
+                                        <input type="text" class="form-control" id="customerDate" name="tanggal-lahir">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-add"></div>
-                    <div class="modal-edit"></div>
-                    <div class="modal-delete"></div>
+                    <!-- End of Add Modal Customer -->
+
+                    <!-- Edit Modal Customer -->
+                    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form action="<?php echo base_url('administrator/customer/edit_customer'); ?>" method="post">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Update Customer</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="customerId">Id</label>
+                                        <input type="text" class="form-control" id="idCustomer" name="id-customer">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="customerNik">NIK</label>
+                                        <input type="text" class="form-control" id="nikCustomer" name="nik">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="customerName">Nama</label>
+                                        <input type="text" class="form-control" id="customerName" name="nama-customer">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="customerAddress">Alamat</label>
+                                        <input type="text" class="form-control" id="customerAddress" name="alamat">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="customerDate">Tanggal Lahir</label>
+                                        <input type="text" class="form-control" id="customerDate" name="tanggal-lahir">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Edit Modal Customer -->
+
+                    <!-- Delete Modal Customer -->
+                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form action="<?php echo base_url('administrator/customer/delete_customer'); ?>" method="post">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Delete Customer</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- ... -->
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Delete Modal Customer -->
                 </div>
             </div>
             <!-- End of Main Content -->
