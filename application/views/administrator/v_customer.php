@@ -96,6 +96,7 @@
                                         <input type="text" class="form-control" id="idCustomerEdit" name="id-customer" value="<?php echo $customer->id_customer ?>">
                                     </div> -->
                                     <input type="hidden" class="form-control" id="idCustomerEdit" name="id-customer" value="<?php echo $customer->id_customer ?>">
+                                    
                                     <div class="form-group">
                                         <label for="nikCustomerEdit">NIK</label>
                                         <input type="text" class="form-control" id="nikCustomerEdit" name="nik" value="<?php echo $customer->nik ?>">
@@ -125,6 +126,8 @@
                     <!-- End of Edit Modal Customer -->
 
                     <!-- Delete Modal Customer -->
+                    <?php $no = 1; ?>
+                    <?php foreach($customers as $customer) { $no++; ?>
                     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -136,7 +139,8 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <!-- ... -->
+                                    <input type="hidden" name="id-customer" value="<?php echo $customer->id_customer ?>">
+                                    <p>Are you sure want to delete this data ?</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -146,6 +150,7 @@
                             </div>
                         </div>
                     </div>
+                    <?php } ?>
                     <!-- End of Delete Modal Customer -->
                 </div>
             </div>

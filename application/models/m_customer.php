@@ -18,6 +18,10 @@ class M_customer extends CI_Model
     public function update_customer($table, $data, $id) {
         $this->db->where('id_customer', $id);
         $this->db->update($table, $data);
-        // return TRUE;
     }
+
+    public function delete_customer($table, $id) {
+        $this->db->where('id_customer', $id);
+        $this->db->delete($table);
+    } 
 }

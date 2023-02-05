@@ -44,8 +44,6 @@ class Customer extends CI_Controller
     // }
 
     public function edit_customer() {
-        // $result 
-
         $id_customer = $this->input->post('id-customer');
         
         $nik_customer = $this->input->post('nik');
@@ -53,16 +51,21 @@ class Customer extends CI_Controller
         $alamat_customer = $this->input->post('alamat');
         $tanggal_lahir_customer = $this->input->post('tanggal-lahir');
 
-        // $where = array('id_customer' => $id_customer);
-
         $data_customer = array(
             'nik' => $nik_customer,
             'nama_customer' => $nama_customer,
             'alamat' => $alamat_customer,
             'tanggal_lahir' => $tanggal_lahir_customer,
         );
-        // echo $where['id_customer'];
+
         $this->m_customer->update_customer('tb_customer', $data_customer, $id_customer);
+        redirect(base_url('administrator/customer'));
+    }
+
+    public function delete_customer() {
+        $id_customer = $this->input->post('id-customer');
+
+        $this->m_customer->delete_customer('tb_customer', $id_customer);
         redirect(base_url('administrator/customer'));
     }
 }
