@@ -6,7 +6,7 @@
                     </button>
 
                     <!-- Table Customer -->
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" id="tableCustomer">
                         <tr>
                             <th>No</th>
                             <th>Id</th>
@@ -20,14 +20,14 @@
                         <?php foreach($customers as $customer) { ?>
                         <tr>
                             <td><?php echo $no++ ?></td>
-                            <td><?php echo $customer->id_customer ?></td>
-                            <td><?php echo $customer->nik ?></td>
-                            <td><?php echo $customer->nama_customer ?></td>
-                            <td><?php echo $customer->alamat ?></td>
-                            <td><?php echo $customer->tanggal_lahir ?></td>
+                            <td id="idCustomer"><?php echo $customer->id_customer ?></td>
+                            <td id="nikCustomer"><?php echo $customer->nik ?></td>
+                            <td id="nameCustomer"><?php echo $customer->nama_customer ?></td>
+                            <td id="addressCustomer"><?php echo $customer->alamat ?></td>
+                            <td id="dateCustomer"><?php echo $customer->tanggal_lahir ?></td>
                             <td colspan="2">
-                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal">Edit</button>
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                                <button type="button" class="btn btn-warning" id="editButton" data-toggle="modal" data-target="#editModal<?php echo $customer->id_customer ?>">Edit</button>
+                                <button type="button" class="btn btn-danger" id="deleteButton" data-toggle="modal" data-target="#deleteModal">Delete</button>
                             </td>
                         </tr>
                         <?php } ?>
@@ -47,24 +47,24 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label for="customerId">Id</label>
-                                        <input type="text" class="form-control" id="idCustomer" name="id-customer">
+                                        <label for="idCustomerAdd">Id</label>
+                                        <input type="text" class="form-control" id="idCustomerAdd" name="id-customer">
                                     </div>
                                     <div class="form-group">
-                                        <label for="customerNik">NIK</label>
-                                        <input type="text" class="form-control" id="nikCustomer" name="nik">
+                                        <label for="nikCustomerAdd">NIK</label>
+                                        <input type="text" class="form-control" id="nikCustomerAdd" name="nik">
                                     </div>
                                     <div class="form-group">
-                                        <label for="customerName">Nama</label>
-                                        <input type="text" class="form-control" id="customerName" name="nama-customer">
+                                        <label for="nameCustomerAdd">Nama</label>
+                                        <input type="text" class="form-control" id="nameCustomerAdd" name="nama-customer">
                                     </div>
                                     <div class="form-group">
-                                        <label for="customerAddress">Alamat</label>
-                                        <input type="text" class="form-control" id="customerAddress" name="alamat">
+                                        <label for="addressCustomerAdd">Alamat</label>
+                                        <input type="text" class="form-control" id="addressCustomerAdd" name="alamat">
                                     </div>
                                     <div class="form-group">
-                                        <label for="customerDate">Tanggal Lahir</label>
-                                        <input type="text" class="form-control" id="customerDate" name="tanggal-lahir">
+                                        <label for="dateCustomerAdd">Tanggal Lahir</label>
+                                        <input type="text" class="form-control" id="dateCustomerAdd" name="tanggal-lahir">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -78,7 +78,9 @@
                     <!-- End of Add Modal Customer -->
 
                     <!-- Edit Modal Customer -->
-                    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <?php $no = 1; ?>
+                    <?php foreach($customers as $customer) { $no++; ?>
+                    <div class="modal fade" id="editModal<?php echo $customer->id_customer ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <form action="<?php echo base_url('administrator/customer/edit_customer'); ?>" method="post">
@@ -89,25 +91,26 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
+                                    <!-- <div class="form-group">
+                                        <label for="idCustomerEdit">Id</label>
+                                        <input type="text" class="form-control" id="idCustomerEdit" name="id-customer" value="<?php echo $customer->id_customer ?>">
+                                    </div> -->
+                                    <input type="hidden" class="form-control" id="idCustomerEdit" name="id-customer" value="<?php echo $customer->id_customer ?>">
                                     <div class="form-group">
-                                        <label for="customerId">Id</label>
-                                        <input type="text" class="form-control" id="idCustomer" name="id-customer">
+                                        <label for="nikCustomerEdit">NIK</label>
+                                        <input type="text" class="form-control" id="nikCustomerEdit" name="nik" value="<?php echo $customer->nik ?>">
                                     </div>
                                     <div class="form-group">
-                                        <label for="customerNik">NIK</label>
-                                        <input type="text" class="form-control" id="nikCustomer" name="nik">
+                                        <label for="nameCustomerEdit">Nama</label>
+                                        <input type="text" class="form-control" id="nameCustomerEdit" name="nama-customer" value="<?php echo $customer->nama_customer ?>">
                                     </div>
                                     <div class="form-group">
-                                        <label for="customerName">Nama</label>
-                                        <input type="text" class="form-control" id="customerName" name="nama-customer">
+                                        <label for="addressCustomerEdit">Alamat</label>
+                                        <input type="text" class="form-control" id="addressCustomerEdit" name="alamat" value="<?php echo $customer->alamat ?>">
                                     </div>
                                     <div class="form-group">
-                                        <label for="customerAddress">Alamat</label>
-                                        <input type="text" class="form-control" id="customerAddress" name="alamat">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="customerDate">Tanggal Lahir</label>
-                                        <input type="text" class="form-control" id="customerDate" name="tanggal-lahir">
+                                        <label for="dateCustomerEdit">Tanggal Lahir</label>
+                                        <input type="text" class="form-control" id="dateCustomerEdit" name="tanggal-lahir" value="<?php echo $customer->tanggal_lahir ?>">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -118,6 +121,7 @@
                             </div>
                         </div>
                     </div>
+                    <?php } ?>
                     <!-- End of Edit Modal Customer -->
 
                     <!-- Delete Modal Customer -->
@@ -187,3 +191,44 @@
             </div>
         </div>
     </div>
+
+    <!-- get id_customer send to input edit form -->
+    <script>
+        // $('#tableCustomer').on('click', '#editButton', function() {
+        //     const id_customer = $(this).data('id_customer');
+        //     $('#idCustomerEdit').val(id_customer);
+        //     // console.log($('#idCustomerEdit'));
+        // });
+        // const editButtons = document.querySelectorAll('#editButton');
+
+        // const idCustomers = document.querySelectorAll('#idCustomer');
+        // const nikCustomers = document.querySelectorAll('#nikCustomer');
+        // const nameCustomers = document.querySelectorAll('#nameCustomer');
+        // const addressCustomers = document.querySelectorAll('#addressCustomer');
+        // const dateCustomers = document.querySelectorAll('#dateCustomer');
+        
+        // const idCustomerEdit = document.querySelector('#idCustomerEdit');
+        // const nikCustomerEdit = document.querySelector('#nikCustomerEdit');
+        // const nameCustomerEdit = document.querySelector('#nameCustomerEdit');
+        // const addressCustomerEdit = document.querySelector('#addressCustomerEdit');
+        // const dateCustomerEdit = document.querySelector('#dateCustomerEdit');
+        
+        // editButtons.forEach((editButton, index) => {
+        //     editButton.addEventListener('click', (event) => {
+        //         event.preventDefault();
+                
+        //         const idCustomer = idCustomers[index].innerText;
+        //         const nikCustomer = nikCustomers[index].innerText;
+        //         const nameCustomer = nameCustomers[index].innerText;
+        //         const addressCustomer = addressCustomers[index].innerText;
+        //         const dateCustomer = dateCustomers[index].innerText;
+
+        //         idCustomerEdit.value = idCustomer;
+        //         nikCustomerEdit.value = nikCustomer;
+        //         nameCustomerEdit.value = nameCustomer;
+        //         addressCustomerEdit.value = addressCustomer;
+        //         dateCustomerEdit.value = dateCustomer;
+        //     }); 
+        // });
+        // console.log(idCustomerInput.value);
+    </script>

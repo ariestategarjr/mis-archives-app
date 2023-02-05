@@ -21,7 +21,7 @@ class Login extends CI_Controller
             'password' => $password,
         );
 
-        $result = $this->m_login->get_account('account', $where); 
+        $result = $this->m_login->get_account('tb_akun', $where); 
         $check = $result->num_rows();
         $datas = $result->result();
 
@@ -34,7 +34,7 @@ class Login extends CI_Controller
 
             foreach ($datas as $data)
             {
-                if($data->level === "administrator") {
+                if($data->status === "admin") {
                     redirect(base_url('administrator/dashboard'));
                 } else {
                     redirect(base_url('operator/dashboard'));
