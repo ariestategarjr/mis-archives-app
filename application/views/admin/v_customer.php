@@ -27,7 +27,7 @@
                             <td id="dateCustomer"><?php echo $customer->tanggal_lahir ?></td>
                             <td colspan="2">
                                 <button type="button" class="btn btn-warning" id="editButton" data-toggle="modal" data-target="#editModal<?php echo $customer->id_customer ?>">Edit</button>
-                                <button type="button" class="btn btn-danger" id="deleteButton" data-toggle="modal" data-target="#deleteModal">Hapus</button>
+                                <button type="button" class="btn btn-danger" id="deleteButton" data-toggle="modal" data-target="#deleteModal<?php echo $customer->id_customer ?>">Hapus</button>
                             </td>
                         </tr>
                         <?php } ?>
@@ -91,10 +91,6 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <!-- <div class="form-group">
-                                        <label for="idCustomerEdit">Id</label>
-                                        <input type="text" class="form-control" id="idCustomerEdit" name="id-customer" value="<?php echo $customer->id_customer ?>">
-                                    </div> -->
                                     <input type="hidden" class="form-control" id="idCustomerEdit" name="id-customer" value="<?php echo $customer->id_customer ?>">
                                     
                                     <div class="form-group">
@@ -125,33 +121,7 @@
                     <?php } ?>
                     <!-- End of Edit Modal Customer -->
 
-                    <!-- Delete Modal Customer -->
-                    <?php $no = 1; ?>
-                    <?php foreach($customers as $customer) { $no++; ?>
-                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <form action="<?php echo base_url('admin/customer/delete_customer'); ?>" method="post">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Delete Customer</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <input type="hidden" name="id-customer" value="<?php echo $customer->id_customer ?>">
-                                    <p>Apakah Anda yakin akan menghapus data ini ?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Save changes</button>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <?php } ?>
-                    <!-- End of Delete Modal Customer -->
+                   
                 </div>
             </div>
             <!-- End of Main Content -->

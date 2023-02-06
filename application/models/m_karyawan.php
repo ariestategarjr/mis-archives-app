@@ -11,8 +11,10 @@ class M_karyawan extends CI_Model
         $this->db->insert($table, $data);
     }
 
-    // public function update_karyawan($table, $data, $id) {
-    //     $this->db->where('id_karyawan', $id);
-    //     $this->db->update($table, $data);
-    // }
+    public function update_karyawan($table, $data, $id) {
+        $this->db->where('id_karyawan', $id);
+        $this->db->update($table, $data);
+    }
+
+
 }

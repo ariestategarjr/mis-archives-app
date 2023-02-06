@@ -34,4 +34,21 @@ class Karyawan extends CI_Controller
         $this->m_karyawan->insert_karyawan('tb_karyawan', $data_karyawan);
         redirect(base_url('admin/karyawan'));
     }
+
+    public function edit_karyawan() {
+        $id_karyawan = $this->input->post('id-karyawan');
+
+        $nama_karyawan = $this->input->post('nama-karyawan');
+        $jabatan = $this->input->post('jabatan');
+
+        $data_karyawan = array(
+            'nama_karyawan' => $nama_karyawan,
+            'jabatan' => $jabatan,
+        );
+
+        $this->m_karyawan->update_karyawan('tb_karyawan', $data_karyawan, $id_karyawan);
+        redirect(base_url('admin/karyawan'));
+    }
+
+
 }
