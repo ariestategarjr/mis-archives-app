@@ -16,5 +16,8 @@ class M_karyawan extends CI_Model
         $this->db->update($table, $data);
     }
 
-
+    public function delete_karyawan($table, $id) {
+        $this->db->where('id_karyawan', $id);
+        $this->db->delete($table);
+    }
 }

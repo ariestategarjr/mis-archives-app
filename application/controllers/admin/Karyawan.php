@@ -50,5 +50,10 @@ class Karyawan extends CI_Controller
         redirect(base_url('admin/karyawan'));
     }
 
+    public function delete_karyawan() {
+        $id_karyawan = $this->input->post('id-karyawan');
 
+        $this->m_karyawan->delete_karyawan('tb_karyawan', $id_karyawan);
+        redirect(base_url('admin/karyawan'));
+    }
 }
