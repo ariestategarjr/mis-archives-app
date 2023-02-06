@@ -101,7 +101,7 @@
                     <!-- Delete Modal Karyawan -->
                     <?php $no = 1; ?>
                     <?php foreach($karyawans as $karyawan) { $no++; ?>
-                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="deleteModal<?php echo $karyawan->id_karyawan ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <form action="<?php echo base_url('admin/karyawan/delete_karyawan'); ?>" method="post">

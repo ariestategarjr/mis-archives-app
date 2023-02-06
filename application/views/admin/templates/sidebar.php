@@ -4,7 +4,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -85,7 +85,7 @@
             <li class="nav-item nav-bisnis-unit">
                 <a class="nav-link" href="<?php echo base_url('admin/bisnis_unit'); ?>">
                     <!-- <i class="fas fa-user-tie"></i> -->
-                    <i class="fas fa-id-card"></i>
+                    <i class="fas fa-briefcase"></i>
                     <span>Bisnis Unit</span>
                 </a>
                 <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"

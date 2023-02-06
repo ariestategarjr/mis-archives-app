@@ -1,12 +1,142 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <div class="content">
-                        <button class="btn btn-success">Tambah Akun</button>
+                    <!-- Button trigger Add Modal Akun -->
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addModal">
+                        Tambah Akun
+                    </button>
 
+                    <!-- Table Akun -->
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>No</th>
+                            <th>Id Akun</th>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                        <?php $no = 1; ?>
+                        <?php foreach($akuns as $akun) { ?>
+                        <tr>
+                            <td><?php echo $no++; ?></td>
+                            <td><?php echo $akun->id_akun ?></td>
+                            <td><?php echo $akun->username ?></td>
+                            <td><?php echo $akun->password ?></td>
+                            <td><?php echo $akun->status ?></td>
+                            <td colspan="2">
+                                <button type="button" class="btn btn-warning" id="editButton" data-toggle="modal" data-target="#editModal<?php echo $akun->id_akun ?>">Edit</button>
+                                <button type="button" class="btn btn-danger" id="deleteButton" data-toggle="modal" data-target="#deleteModal<?php echo $akun->id_akun ?>">Hapus</button>
+                            </td>
+                        </tr>
+                        <?php } ?>
+                    </table>
+
+                    <!-- Add Modal Akun -->
+                    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form action="<?php echo base_url('admin/akun/add_akun'); ?>" method="post">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Insert Akun</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="idAkunAdd">Id Akun</label>
+                                        <input type="text" class="form-control" id="idAkunAdd" name="id-akun">
+                                    </div>  
+                                    <div class="form-group">
+                                        <label for="usernameAkunAdd">Username</label>
+                                        <input type="text" class="form-control" id="usernameAkunAdd" name="username-akun">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="passwordAkunAdd">Password</label>
+                                        <input type="password" class="form-control" id="passwordAkunAdd" name="password-akun">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="statusAkunAdd">Status</label>
+                                        <input type="text" class="form-control" id="statusAkunAdd" name="status-akun">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-add"></div>
-                    <div class="modal-edit"></div>
-                    <div class="modal-delete"></div>
+                    <!-- End of Add Modal Akun -->
+
+                    <!-- Edit Modal Akun -->
+                    <?php $no = 1; ?>
+                    <?php foreach($akuns as $akun) { $no++; ?>
+                    <div class="modal fade" id="editModal<?php echo $akun->id_akun ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form action="<?php echo base_url('admin/akun/edit_akun'); ?>" method="post">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Update Akun</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="hidden" class="form-control" id="idAkunEdit" name="id-akun" value="<?php echo $akun->id_akun ?>">
+                                    
+                                    <div class="form-group">
+                                        <label for="usernameAkunEdit">Username</label>
+                                        <input type="text" class="form-control" id="usernameAkunEdit" name="username-akun" value="<?php echo $akun->username ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="passwordAkunEdit">Password</label>
+                                        <input type="password" class="form-control" id="passwordAkunEdit" name="password-akun" value="<?php echo $akun->password ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="statusAkunEdit">Status</label>
+                                        <input type="text" class="form-control" id="statusAkunEdit" name="status-akun" value="<?php echo $akun->status ?>">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
+                    <!-- End of Edit Modal Akun -->
+
+                    <!-- Delete Modal Akun -->
+                    <?php $no = 1; ?>
+                    <?php foreach($akuns as $akun) { $no++; ?>
+                    <div class="modal fade" id="deleteModal<?php echo $akun->id_akun ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form action="<?php echo base_url('admin/akun/delete_akun'); ?>" method="post">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Delete Akun</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="hidden" name="id-akun" value="<?php echo $akun->id_akun ?>">
+                                    <p>Apakah Anda yakin akan menghapus data ini ?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
+                    <!-- End of Delete Modal Akun -->
                 </div>
             </div>
             <!-- End of Main Content -->
