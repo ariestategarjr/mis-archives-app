@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Employee extends CI_Controller
+class Akun extends CI_Controller
 {
     function __construct() {
         parent::__construct();
@@ -11,9 +11,9 @@ class Employee extends CI_Controller
     }
 
     public function index() {   
-        $this->load->view('administrator/templates/header');
-        $this->load->view('administrator/templates/sidebar');
-        $this->load->view('administrator/v_employee');
-        $this->load->view('administrator/templates/footer');
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/sidebar');
+        $this->load->view('admin/v_akun');
+        $this->load->view('admin/templates/footer');
     }
 }

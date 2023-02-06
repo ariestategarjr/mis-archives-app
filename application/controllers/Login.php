@@ -35,9 +35,9 @@ class Login extends CI_Controller
             foreach ($datas as $data)
             {
                 if($data->status === "admin") {
-                    redirect(base_url('administrator/dashboard'));
+                    redirect(base_url('admin/dashboard'));
                 } else {
-                    redirect(base_url('operator/dashboard'));
+                    redirect(base_url('dashboard'));
                 }
             }
 

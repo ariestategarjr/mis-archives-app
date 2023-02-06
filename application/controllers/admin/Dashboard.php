@@ -11,9 +11,9 @@ class Dashboard extends CI_Controller
     }
 
     public function index() {   
-        $this->load->view('administrator/templates/header');
-        $this->load->view('administrator/templates/sidebar');
-        $this->load->view('administrator/v_dashboard');
-        $this->load->view('administrator/templates/footer');
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/sidebar');
+        $this->load->view('admin/v_dashboard');
+        $this->load->view('admin/templates/footer');
     }
 }

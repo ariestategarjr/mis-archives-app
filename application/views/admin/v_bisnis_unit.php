@@ -1,7 +1,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <div class="content">
-                        <button>Add New Employee</button>
+                        <button class="btn btn-success">Tambah Bisnis Unit</button>
                         <table>
                             <!-- ...... -->
                         </table>
@@ -53,3 +53,11 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const navDashboard = document.querySelector('.nav-dashboard');
+        const navKaryawan = document. querySelector('.nav-bisnis-unit');
+
+        navDashboard.setAttribute('class', 'nav-item nav-dashboard');
+        navKaryawan.setAttribute('class', 'nav-item nav-bisnis-unit active');
+    </script>

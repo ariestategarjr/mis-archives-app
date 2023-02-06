@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Account extends CI_Controller
+class Bisnis_Unit extends CI_Controller
 {
     function __construct() {
         parent::__construct();
@@ -11,9 +11,9 @@ class Account extends CI_Controller
     }
 
     public function index() {   
-        $this->load->view('administrator/templates/header');
-        $this->load->view('administrator/templates/sidebar');
-        $this->load->view('administrator/v_account');
-        $this->load->view('administrator/templates/footer');
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/sidebar');
+        $this->load->view('admin/v_bisnis_unit');
+        $this->load->view('admin/templates/footer');
     }
 }

@@ -1,8 +1,8 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <!-- Button trigger modal -->
+                    <!-- Button trigger Add Modal Customer -->
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addModal">
-                        Add New Customer
+                        Tambah Customer Baru
                     </button>
 
                     <!-- Table Customer -->
@@ -27,7 +27,7 @@
                             <td id="dateCustomer"><?php echo $customer->tanggal_lahir ?></td>
                             <td colspan="2">
                                 <button type="button" class="btn btn-warning" id="editButton" data-toggle="modal" data-target="#editModal<?php echo $customer->id_customer ?>">Edit</button>
-                                <button type="button" class="btn btn-danger" id="deleteButton" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                                <button type="button" class="btn btn-danger" id="deleteButton" data-toggle="modal" data-target="#deleteModal">Hapus</button>
                             </td>
                         </tr>
                         <?php } ?>
@@ -38,7 +38,7 @@
                     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form action="<?php echo base_url('administrator/customer/add_customer'); ?>" method="post">
+                                <form action="<?php echo base_url('admin/customer/add_customer'); ?>" method="post">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Insert Customer</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -83,7 +83,7 @@
                     <div class="modal fade" id="editModal<?php echo $customer->id_customer ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form action="<?php echo base_url('administrator/customer/edit_customer'); ?>" method="post">
+                                <form action="<?php echo base_url('admin/customer/edit_customer'); ?>" method="post">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Update Customer</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -131,7 +131,7 @@
                     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form action="<?php echo base_url('administrator/customer/delete_customer'); ?>" method="post">
+                                <form action="<?php echo base_url('admin/customer/delete_customer'); ?>" method="post">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Delete Customer</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -140,7 +140,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <input type="hidden" name="id-customer" value="<?php echo $customer->id_customer ?>">
-                                    <p>Are you sure want to delete this data ?</p>
+                                    <p>Apakah Anda yakin akan menghapus data ini ?</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -199,6 +199,11 @@
 
     <!-- get id_customer send to input edit form -->
     <script>
+        const navDashboard = document.querySelector('.nav-dashboard');
+        const navCustomer = document.querySelector('.nav-customer');
+        
+        navDashboard.setAttribute('class', 'nav-item nav-dashboard');
+        navCustomer.setAttribute('class', 'nav-item nav-customer active');
         // $('#tableCustomer').on('click', '#editButton', function() {
         //     const id_customer = $(this).data('id_customer');
         //     $('#idCustomerEdit').val(id_customer);

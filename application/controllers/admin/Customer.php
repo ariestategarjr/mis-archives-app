@@ -14,10 +14,10 @@ class Customer extends CI_Controller
     public function index() {
         $data['customers'] = $this->m_customer->select_customer('tb_customer')->result();
 
-        $this->load->view('administrator/templates/header');
-        $this->load->view('administrator/templates/sidebar');
-        $this->load->view('administrator/v_customer', $data);
-        $this->load->view('administrator/templates/footer');
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/sidebar');
+        $this->load->view('admin/v_customer', $data);
+        $this->load->view('admin/templates/footer');
     }    
 
     public function add_customer() {
@@ -36,7 +36,7 @@ class Customer extends CI_Controller
         );
 
         $this->m_customer->insert_customer('tb_customer', $data_customer);
-        redirect(base_url('administrator/customer'));
+        redirect(base_url('admin/customer'));
     }
 
     // public function find_customer() {
@@ -59,13 +59,13 @@ class Customer extends CI_Controller
         );
 
         $this->m_customer->update_customer('tb_customer', $data_customer, $id_customer);
-        redirect(base_url('administrator/customer'));
+        redirect(base_url('admin/customer'));
     }
 
     public function delete_customer() {
         $id_customer = $this->input->post('id-customer');
 
         $this->m_customer->delete_customer('tb_customer', $id_customer);
-        redirect(base_url('administrator/customer'));
+        redirect(base_url('admin/customer'));
     }
 }

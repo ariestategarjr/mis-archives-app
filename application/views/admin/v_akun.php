@@ -1,10 +1,8 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <div class="content">
-                        <button>Add New Account</button>
-                        <table>
-                            <!-- ...... -->
-                        </table>
+                        <button class="btn btn-success">Tambah Akun</button>
+
                     </div>
                     <div class="modal-add"></div>
                     <div class="modal-edit"></div>
@@ -53,3 +51,11 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const navDashboard = document.querySelector('.nav-dashboard');
+        const navKaryawan = document. querySelector('.nav-akun');
+
+        navDashboard.setAttribute('class', 'nav-item nav-dashboard');
+        navKaryawan.setAttribute('class', 'nav-item nav-akun active');
+    </script>
