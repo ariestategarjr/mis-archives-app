@@ -1,0 +1,27 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class M_arsip extends CI_Model
+{
+    public function get_arsip($table) {
+        return $this->db->get($table);
+    }
+
+    // public function find_customer($table, $where) {
+    //     return $this->db->get_where($table, $where);
+    // }
+
+    public function insert_arsip($table, $data) {
+        $this->db->insert($table, $data);
+    }
+
+    public function update_arsip($table, $data, $id) {
+        $this->db->where('kode_arsip', $id);
+        $this->db->update($table, $data);
+    }
+
+    public function delete_arsip($table, $id) {
+        $this->db->where('kode_arsip', $id);
+        $this->db->delete($table);
+    } 
+}

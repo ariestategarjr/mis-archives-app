@@ -53,4 +53,11 @@
             </div>
         </div>
     </div>
-</html>
+
+    <script>
+        const navDashboard = document.querySelector('.nav-dashboard');
+        const navPinjam = document.querySelector('.nav-pinjam');
+        
+        navDashboard.setAttribute('class', 'nav-item nav-dashboard');
+        navPinjam.setAttribute('class', 'nav-item nav-pinjam active');
+    </script>
