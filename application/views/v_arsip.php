@@ -8,12 +8,12 @@
                     </div>
 
                     <!-- Button trigger Add Modal Akun -->
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addModal">
-                        Tambah Arsip
-                    </button>
+                    <a href="<?php echo base_url('arsip/add_arsip_page'); ?>" class="btn btn-success">
+                        Tambah Arsip Baru
+                    </a>
 
                     <!-- Table Akun -->
-                    <table class="table table-striped">
+                    <table class="table table-responsive table-striped">
                         <tr>
                             <th>No</th>
                             <th>Kode Arsip</th>
@@ -31,7 +31,9 @@
                             <td><?php echo $arsip->nama_customer ?></td>
                             <td><?php echo $arsip->bisnis_unit ?></td>
                             <td><?php echo $arsip->tgl_arsip ?></td>
-                            <td><?php echo $arsip->file_arsip ?></td>
+                            <td>
+                                <a href="<?php echo base_url(); ?>file-upload/<?php echo $arsip->file_arsip ?>"><?php echo $arsip->file_arsip ?></a>
+                            </td>
                             <td colspan="2">
                                 <button type="button" class="btn btn-warning" id="editButton" data-toggle="modal" data-target="#editModal<?php echo $arsip->kode_arsip ?>">Edit</button>
                                 <button type="button" class="btn btn-danger" kode="deleteButton" data-toggle="modal" data-target="#deleteModal<?php echo $arsip->kode_arsip ?>">Hapus</button>
@@ -41,7 +43,7 @@
                     </table>
 
                     <!-- Add Modal Akun -->
-                    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <!-- <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <form action="<?php echo base_url('arsip/add_arsip'); ?>" method="post">
@@ -62,7 +64,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="bisnisUnitArsipAdd">Bisnis Unit</label>
-                                        <!-- <input type="text" class="form-control" id="bisnisUnitArsipAdd" name="bisnis-unit-arsip" autocomplete="off"> -->
+                                        <input type="text" class="form-control" id="bisnisUnitArsipAdd" name="bisnis-unit-arsip" autocomplete="off">
                                         <a class="btn btn-secondary" id="bisnisUnitArsipAdd" data-toggle="modal" data-target="#displayBisnisUnitModal">Pilih...</a>
                                     </div>
                                     <div class="form-group">
@@ -81,7 +83,7 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- End of Add Modal Akun -->
 
                     <!-- Add Modal Akun -->
@@ -154,10 +156,10 @@
         </div>
     </div>
 
+    <script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
     <script>
-        const navDashboard = document.querySelector('.nav-dashboard');
-        const navArsip = document.querySelector('.nav-arsip');
-        
-        navDashboard.setAttribute('class', 'nav-item nav-dashboard');
-        navArsip.setAttribute('class', 'nav-item nav-arsip active');
+        $(document).ready(function(){
+            $('.nav-dashboard').attr('class', 'nav-item nav-dashboard');
+            $('.nav-arsip').attr('class', 'nav-item nav-arsip active');
+        });
     </script>

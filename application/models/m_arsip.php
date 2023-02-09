@@ -11,8 +11,9 @@ class M_arsip extends CI_Model
     //     return $this->db->get_where($table, $where);
     // }
 
-    public function insert_arsip($table, $data) {
-        $this->db->insert($table, $data);
+    public function insert_arsip($data) {
+        $this->db->insert('tb_arsip', $data);
+        // return ($this->db->affected_rows() > 0) ? TRUE : FALSE;
     }
 
     public function update_arsip($table, $data, $id) {
