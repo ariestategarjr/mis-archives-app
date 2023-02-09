@@ -59,7 +59,7 @@
 
                     <!-- Add Modal Akun -->
                     <div class="modal fade" id="displayCustomerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Daftar Customer</h5>
@@ -157,7 +157,7 @@
             $('.nav-arsip').attr('class', 'nav-item nav-arsip active');
 
             $(document).on('click', '#selectButton', function() {
-                let namaCustomer = $(this).data('nama-customer');
+                const namaCustomer = $(this).data('nama-customer');
                 
                 $('#namaCustomerArsipAdd').val(namaCustomer);
                 $('#displayCustomerModal').modal('hide');

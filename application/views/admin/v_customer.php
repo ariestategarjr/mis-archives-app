@@ -12,8 +12,8 @@
                             <th>Id</th>
                             <th>NIK</th>
                             <th>Nama</th>
-                            <th>Alamat</th>
                             <th>Tanggal Lahir</th>
+                            <th>Alamat</th>
                             <th>Aksi</th>
                         </tr>
                         <?php $no = 1; ?>
@@ -23,8 +23,8 @@
                             <td id="idCustomer"><?php echo $customer->id_customer ?></td>
                             <td id="nikCustomer"><?php echo $customer->nik ?></td>
                             <td id="nameCustomer"><?php echo $customer->nama_customer ?></td>
-                            <td id="addressCustomer"><?php echo $customer->alamat ?></td>
                             <td id="dateCustomer"><?php echo $customer->tanggal_lahir ?></td>
+                            <td id="addressCustomer"><?php echo $customer->alamat ?></td>
                             <td colspan="2">
                                 <button type="button" class="btn btn-warning" id="editButton" data-toggle="modal" data-target="#editModal<?php echo $customer->id_customer ?>">Edit</button>
                                 <button type="button" class="btn btn-danger" id="deleteButton" data-toggle="modal" data-target="#deleteModal<?php echo $customer->id_customer ?>">Hapus</button>
@@ -48,23 +48,23 @@
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label for="idCustomerAdd">Id</label>
-                                        <input type="text" class="form-control" id="idCustomerAdd" name="id-customer">
+                                        <input type="text" class="form-control" id="idCustomerAdd" name="id-customer" autocomplete="off" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="nikCustomerAdd">NIK</label>
-                                        <input type="text" class="form-control" id="nikCustomerAdd" name="nik">
+                                        <input type="text" class="form-control" id="nikCustomerAdd" name="nik" autocomplete="off" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="nameCustomerAdd">Nama</label>
-                                        <input type="text" class="form-control" id="nameCustomerAdd" name="nama-customer">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="addressCustomerAdd">Alamat</label>
-                                        <input type="text" class="form-control" id="addressCustomerAdd" name="alamat">
+                                        <input type="text" class="form-control" id="nameCustomerAdd" name="nama-customer" autocomplete="off" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="dateCustomerAdd">Tanggal Lahir</label>
-                                        <input type="text" class="form-control" id="dateCustomerAdd" name="tanggal-lahir">
+                                        <input type="date" class="form-control" id="dateCustomerAdd" name="tanggal-lahir" autocomplete="off" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="addressCustomerAdd">Alamat</label>
+                                        <textarea class="form-control" id="addressCustomerAdd" rows="3" name="alamat" required></textarea>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -91,23 +91,23 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <input type="hidden" class="form-control" id="idCustomerEdit" name="id-customer" value="<?php echo $customer->id_customer ?>">
+                                    <input type="hidden" class="form-control" id="idCustomerEdit" name="id-customer" value="<?php echo $customer->id_customer ?>" autocomplete="off">
                                     
                                     <div class="form-group">
                                         <label for="nikCustomerEdit">NIK</label>
-                                        <input type="text" class="form-control" id="nikCustomerEdit" name="nik" value="<?php echo $customer->nik ?>">
+                                        <input type="text" class="form-control" id="nikCustomerEdit" name="nik" value="<?php echo $customer->nik ?>" autocomplete="off" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="nameCustomerEdit">Nama</label>
-                                        <input type="text" class="form-control" id="nameCustomerEdit" name="nama-customer" value="<?php echo $customer->nama_customer ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="addressCustomerEdit">Alamat</label>
-                                        <input type="text" class="form-control" id="addressCustomerEdit" name="alamat" value="<?php echo $customer->alamat ?>">
+                                        <input type="text" class="form-control" id="nameCustomerEdit" name="nama-customer" value="<?php echo $customer->nama_customer ?>" autocomplete="off" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="dateCustomerEdit">Tanggal Lahir</label>
-                                        <input type="text" class="form-control" id="dateCustomerEdit" name="tanggal-lahir" value="<?php echo $customer->tanggal_lahir ?>">
+                                        <input type="date" class="form-control" id="dateCustomerEdit" name="tanggal-lahir" value="<?php echo $customer->tanggal_lahir ?>" autocomplete="off" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="addressCustomerEdit">Alamat</label>
+                                        <textarea class="form-control" id="addressCustomerEdit" rows="3" name="alamat" placeholder="<?php echo $customer->alamat ?>" autocomplete="off" required></textarea>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -194,12 +194,38 @@
     </div>
 
     <!-- get id_customer send to input edit form -->
+    <script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
     <script>
-        const navDashboard = document.querySelector('.nav-dashboard');
-        const navCustomer = document.querySelector('.nav-customer');
+        $(document).ready(function() {
+            $('.nav-dashboard').attr('class', 'nav-item nav-dashboard');
+            $('.nav-customer').attr('class', 'nav-item nav-customer active');
+
+            
+            // const editButtons = document.querySelectorAll('#editButton');
+            // const addressCustomers = document.querySelectorAll('#addressCustomer');
+            // const addressCustomerEdits = document.querySelectorAll('#addressCustomerEdit');
+            // editButtons.forEach((editButton) => {
+            //     editButton.addEventListener('click', () => {
+            //         addressCustomerEdits.forEach((addressCustomerEdit) => {
+            //             addressCustomers.forEach((addressCustomer) => {
+            //                 addressCustomerEdit.innerText = addressCustomer.innerText;
+            //             })
+            //         });
+            //     });
+            // });
+            // const editButtons = $(document).find('#editButton').length;
+            // console.log(editButtons);
+            // $(document).on('click', '#editButton', function() {
+            //     const addressCustomer = $('#addressCustomer').text();
+
+            //     $('#addressCustomerEdit').val(addressCustomer);
+            // });
+        });
+        // const navDashboard = document.querySelector('.nav-dashboard');
+        // const navCustomer = document.querySelector('.nav-customer');
         
-        navDashboard.setAttribute('class', 'nav-item nav-dashboard');
-        navCustomer.setAttribute('class', 'nav-item nav-customer active');
+        // navDashboard.setAttribute('class', 'nav-item nav-dashboard');
+        // navCustomer.setAttribute('class', 'nav-item nav-customer active');
         // $('#tableCustomer').on('click', '#editButton', function() {
         //     const id_customer = $(this).data('id_customer');
         //     $('#idCustomerEdit').val(id_customer);
