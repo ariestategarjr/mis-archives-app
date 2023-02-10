@@ -41,15 +41,15 @@
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label for="idKaryawanAdd">Id Karyawan</label>
-                                        <input type="text" class="form-control" id="idKaryawanAdd" name="id-karyawan">
+                                        <input type="text" class="form-control" id="idKaryawanAdd" name="id-karyawan" autocomplete="off" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="namaKaryawanAdd">Nama Karyawan</label>
-                                        <input type="text" class="form-control" id="namaKaryawanAdd" name="nama-karyawan">
+                                        <input type="text" class="form-control" id="namaKaryawanAdd" name="nama-karyawan" autocomplete="off" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="alamatKaryawanAdd">Jabatan</label>
-                                        <input type="text" class="form-control" id="alamatKaryawanAdd" name="jabatan">
+                                        <input type="text" class="form-control" id="alamatKaryawanAdd" name="jabatan" autocomplete="off" required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -76,15 +76,15 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <input type="hidden" class="form-control" id="idKaryawanEdit" name="id-karyawan" value="<?php echo $karyawan->id_karyawan ?>">
+                                    <input type="hidden" class="form-control" id="idKaryawanEdit" name="id-karyawan" value="<?php echo $karyawan->id_karyawan ?>" autocomplete="off" required>
                                     
                                     <div class="form-group">
                                         <label for="namaKaryawanEdit">Nama Karyawan</label>
-                                        <input type="text" class="form-control" id="namaKaryawanEdit" name="nama-karyawan" value="<?php echo $karyawan->nama_karyawan ?>">
+                                        <input type="text" class="form-control" id="namaKaryawanEdit" name="nama-karyawan" value="<?php echo $karyawan->nama_karyawan ?>" autocomplete="off" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="jabatanKaryawanEdit">Jabatan</label>
-                                        <input type="text" class="form-control" id="jabatanKaryawanEdit" name="jabatan" value="<?php echo $karyawan->jabatan ?>">
+                                        <input type="text" class="form-control" id="jabatanKaryawanEdit" name="jabatan" value="<?php echo $karyawan->jabatan ?>" autocomplete="off" required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -170,6 +170,7 @@
         </div>
     </div>
 
+    <script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
     <script>
         const navDashboard = document.querySelector('.nav-dashboard');
         const navKaryawan = document. querySelector('.nav-karyawan');

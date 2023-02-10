@@ -35,8 +35,8 @@
                                 <a href="<?php echo base_url(); ?>file-upload/<?php echo $arsip->file_arsip ?>"><?php echo $arsip->file_arsip ?></a>
                             </td>
                             <td colspan="2">
-                                <button type="button" class="btn btn-warning" id="editButton" data-toggle="modal" data-target="#editModal<?php echo $arsip->kode_arsip ?>">Edit</button>
-                                <button type="button" class="btn btn-danger" kode="deleteButton" data-toggle="modal" data-target="#deleteModal<?php echo $arsip->kode_arsip ?>">Hapus</button>
+                                <a href="<?= base_url('arsip/edit_arsip_page'); ?>" class="btn btn-warning mr-1" id="editButton">Edit</button>
+                                <a href="#" class="btn btn-danger ml-1" id="deleteButton">Hapus</button>
                             </td>                      
                         </tr>
                         <?php } ?>

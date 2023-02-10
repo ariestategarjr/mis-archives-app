@@ -32,6 +32,16 @@ class Arsip extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function edit_arsip_page() {
+        $data['customers'] = $this->m_customer->select_customer('tb_customer')->result();
+        $data['bisnis_units'] = $this->m_bisnis_unit->get_bisnis_unit('tb_bisnis_unit')->result();
+
+        $this->load->view('templates/header');
+        $this->load->view('templates/sidebar');
+        $this->load->view('v_arsip_edit', $data);
+        $this->load->view('templates/footer');
+    }
+
     public function add_arsip() {
         $kode_arsip = $this->input->post('kode-arsip');
         $nama_customer = $this->input->post('nama-customer');
@@ -48,12 +58,40 @@ class Arsip extends CI_Controller
                 echo "File gagal diupload!";
             } else {
                 $file_arsip = $this->upload->data('file_name');
-                // $data = array('upload_data' => $this->upload->data());
             }
         }
         
+        $data_arsip = array(
+            'kode_arsip' => $kode_arsip,
+            'nama_customer' => $nama_customer,
+            'bisnis_unit' => $bisnis_unit,
+            'tgl_arsip' => $tanggal_arsip,
+            'file_arsip' => $file_arsip,
+        );
+        
+        $this->m_arsip->insert_arsip($data_arsip);
+        redirect('arsip');
+    }
 
+    public function edit_arsip() {
+        $kode_arsip = $this->input->post('kode-arsip');
+        $nama_customer = $this->input->post('nama-customer');
+        $bisnis_unit = $this->input->post('bisnis-unit');
+        $tanggal_arsip = $this->input->post('tanggal-arsip');
+        $file_arsip = $_FILES['file-arsip']['name'];
 
+        if($file_arsip) {
+            $config ['upload_path'] = './file_upload';
+            $config ['allowed_types'] = 'pdf';
+
+            $this->load->library('upload', $config);
+            if(!$this->upload->do_upload('file-arsip')){
+                echo "File gagal diupload!";
+            } else {
+                $file_arsip = $this->upload->data('file_name');
+            }
+        }
+        
         $data_arsip = array(
             'kode_arsip' => $kode_arsip,
             'nama_customer' => $nama_customer,
