@@ -10,9 +10,11 @@
                     <!-- Form Edit Arsip -->
                     <form action="<?= base_url('arsip/edit_arsip'); ?>" method="post" enctype="multipart/form-data">
                         <div class="form-group row">
+
+                        jkljkjjlkjlk
                             <label for="kodeArsipAdd" class="col-sm-2 col-form-label">Kode Arsip</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" id="kodeArsipAdd" name="kode-arsip" autocomplete="off" required>
+                                <input type="text" class="form-control" id="kodeArsipAdd" name="kode-arsip" value="<?= arsips->kode_arsip ?>" autocomplete="off" required>
                             </div>
                         </div>
                         <div class="form-group row">
