@@ -8,19 +8,18 @@
                     </div>
 
                     <!-- Form Edit Arsip -->
-                    <form action="<?= base_url('arsip/edit_arsip'); ?>" method="post" enctype="multipart/form-data">
-                        <div class="form-group row">
 
-                        jkljkjjlkjlk
-                            <label for="kodeArsipAdd" class="col-sm-2 col-form-label">Kode Arsip</label>
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" id="kodeArsipAdd" name="kode-arsip" value="<?= arsips->kode_arsip ?>" autocomplete="off" required>
-                            </div>
-                        </div>
+                    <form action="<?= base_url('arsip/edit_arsip'); ?>" method="post" enctype="multipart/form-data">
+                        <!-- <div class="form-group row"> -->
+                            <!-- <label for="kodeArsipAdd" class="col-sm-2 col-form-label">Kode Arsip</label> -->
+                            <!-- <div class="col-sm-5"> -->
+                        <input type="hidden" class="form-control" id="kodeArsipAdd" name="kode-arsip" value="<?= $arsip->kode_arsip ?>" autocomplete="off" required>
+                            <!-- </div> -->
+                        <!-- </div> -->
                         <div class="form-group row">
                             <label for="namaCustomerArsipAdd" class="col-sm-2 col-form-label">Nama Customer</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="namaCustomerArsipAdd" name="nama-customer" autocomplete="off" required>
+                                <input type="text" class="form-control" id="namaCustomerArsipAdd" name="nama-customer" value="<?= $arsip->nama_customer ?>" autocomplete="off" required>
                             </div>
                             <div class="col-sm-1">
                                 <a class="btn btn-secondary w-100" data-toggle="modal" data-target="#displayCustomerModal">Pilih...</a>
@@ -29,9 +28,12 @@
                         <div class="form-group row">
                             <label for="bisnisUnitArsipAdd " class="col-sm-2 col-form-label">Bisnis Unit</label>
                             <select class="form-control col-sm-5 ml-2" id="bisnisUnitArsipAdd" name="bisnis-unit" required>
-                                <option>--Pilih--</option>
+                                <option value="<?= $arsip->bisnis_unit ?>">
+                                    <?php echo $arsip->bisnis_unit ?>
+                                    <!-- --Pilih-- -->
+                                </option>
                                 <?php foreach($bisnis_units as $bisnis_unit) { ?>
-                                <option value="<?php echo $bisnis_unit->kode_bisnis_unit?>">
+                                <option value="<?php echo $bisnis_unit->nama_bisnis_unit?>">
                                     <?php echo $bisnis_unit->nama_bisnis_unit ?>
                                 </option>
                                 <?php } ?>
@@ -40,13 +42,14 @@
                         <div class="form-group row">
                             <label for="tanggalArsipAdd" class="col-sm-2 col-form-label">Tanggal Arsip</label>
                             <div class="col-sm-4">
-                                <input type="date" class="form-control" id="tanggalArsipAdd" name="tanggal-arsip" autocomplete="off" required>
+                                <input type="date" class="form-control" id="tanggalArsipAdd" name="tanggal-arsip" value="<?php echo $arsip->tgl_arsip ?>" autocomplete="off" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="fileArsipAdd" class="col-sm-2 col-form-label">File Arsip</label>
                             <div class="col-sm-4">
                                 <input type="file" id="fileArsipAdd" name="file-arsip" autocomplete="off" required>
+                                <p>File Terakhir : <?php echo $arsip->file_arsip ?></p>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -57,9 +60,10 @@
                             </div>
                         </div>
                     </form>
+  
              
 
-                    <!-- Add Modal Akun -->
+                    <!-- Display Customers Data -->
                     <div class="modal fade" id="displayCustomerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
@@ -106,7 +110,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- End of Add Modal Akun -->
+                    <!-- End of Display Customers Data -->
                 </div>
             </div>
             <!-- End of Main Content -->
@@ -154,15 +158,18 @@
 
     <script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
     <script>
-        $(document).ready(function(){
+        $(document).ready(function() {
+            // sidebar focus
             $('.nav-dashboard').attr('class', 'nav-item nav-dashboard');
             $('.nav-arsip').attr('class', 'nav-item nav-arsip active');
 
+            // select display customer
             $(document).on('click', '#selectButton', function() {
                 const namaCustomer = $(this).data('nama-customer');
-                
                 $('#namaCustomerArsipAdd').val(namaCustomer);
                 $('#displayCustomerModal').modal('hide');
             });
+
+            
         });
     </script>

@@ -16,13 +16,13 @@ class M_arsip extends CI_Model
         // return ($this->db->affected_rows() > 0) ? TRUE : FALSE;
     }
 
-    public function update_arsip($table, $data, $id) {
+    public function update_arsip($data, $id) {
         $this->db->where('kode_arsip', $id);
-        $this->db->update($table, $data);
+        $this->db->update('tb_arsip', $data);
     }
 
-    public function delete_arsip($table, $id) {
+    public function delete_arsip($id) {
         $this->db->where('kode_arsip', $id);
-        $this->db->delete($table);
+        $this->db->delete('tb_arsip');
     } 
 }

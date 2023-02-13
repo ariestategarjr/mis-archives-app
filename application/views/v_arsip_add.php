@@ -29,7 +29,7 @@
                             <select class="form-control col-sm-5 ml-2" id="bisnisUnitArsipAdd" name="bisnis-unit" required>
                                 <option>--Pilih--</option>
                                 <?php foreach($bisnis_units as $bisnis_unit) { ?>
-                                <option value="<?php echo $bisnis_unit->kode_bisnis_unit?>">
+                                <option value="<?php echo $bisnis_unit->nama_bisnis_unit ?>">
                                     <?php echo $bisnis_unit->nama_bisnis_unit ?>
                                 </option>
                                 <?php } ?>

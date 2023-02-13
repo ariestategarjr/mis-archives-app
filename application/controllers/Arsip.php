@@ -32,7 +32,9 @@ class Arsip extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function edit_arsip_page() {
+    public function edit_arsip_page($kode) {
+        $where = array('kode_arsip' => $kode);
+        $data['arsip'] = $this->db->get_where('tb_arsip', $where)->row();
         $data['customers'] = $this->m_customer->select_customer('tb_customer')->result();
         $data['bisnis_units'] = $this->m_bisnis_unit->get_bisnis_unit('tb_bisnis_unit')->result();
 
@@ -70,11 +72,12 @@ class Arsip extends CI_Controller
         );
         
         $this->m_arsip->insert_arsip($data_arsip);
-        redirect('arsip');
+        redirect(base_url('arsip'));
     }
 
     public function edit_arsip() {
         $kode_arsip = $this->input->post('kode-arsip');
+
         $nama_customer = $this->input->post('nama-customer');
         $bisnis_unit = $this->input->post('bisnis-unit');
         $tanggal_arsip = $this->input->post('tanggal-arsip');
@@ -93,14 +96,20 @@ class Arsip extends CI_Controller
         }
         
         $data_arsip = array(
-            'kode_arsip' => $kode_arsip,
             'nama_customer' => $nama_customer,
             'bisnis_unit' => $bisnis_unit,
             'tgl_arsip' => $tanggal_arsip,
             'file_arsip' => $file_arsip,
         );
         
-        $this->m_arsip->insert_arsip($data_arsip);
-        redirect('arsip');
+        $this->m_arsip->update_arsip($data_arsip, $kode_arsip);
+        redirect(base_url('arsip'));
+    }
+
+    public function delete_arsip() {
+        $kode_arsip = $this->input->post('kode-arsip');
+        // echo $kode_arsip;
+        $this->m_arsip->delete_arsip($kode_arsip);
+        redirect(base_url('arsip'));
     }
 }

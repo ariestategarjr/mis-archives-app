@@ -8,7 +8,7 @@
                     </div>
 
                     <!-- Button trigger Add Modal Akun -->
-                    <a href="<?php echo base_url('arsip/add_arsip_page'); ?>" class="btn btn-success">
+                    <a href="<?= base_url('arsip/add_arsip_page'); ?>" class="btn btn-success">
                         Tambah Arsip Baru
                     </a>
 
@@ -28,55 +28,38 @@
                         <?php $no = 1; ?>
                         <?php foreach($arsips as $arsip) { ?>
                         <tr>
-                            <td><?php echo $no++; ?></td>
-                            <td><?php echo $arsip->kode_arsip ?></td>
-                            <td><?php echo $arsip->nama_customer ?></td>
-                            <td><?php echo $arsip->bisnis_unit ?></td>
-                            <td><?php echo $arsip->tgl_arsip ?></td>
+                            <td><?= $no++; ?></td>
+                            <td><?= $arsip->kode_arsip ?></td>
+                            <td><?= $arsip->nama_customer ?></td>
+                            <td><?= $arsip->bisnis_unit ?></td>
+                            <td><?= $arsip->tgl_arsip ?></td>
                             <td>
-                                <a href="<?php echo base_url(); ?>file-upload/<?php echo $arsip->file_arsip ?>"><?php echo $arsip->file_arsip ?></a>
+                                <a href="<?= base_url(); ?>file-upload/<?= $arsip->file_arsip ?>"><?= $arsip->file_arsip ?></a>
                             </td>
                             <td colspan="2">
-                                <a href="<?= base_url('arsip/edit_arsip_page'); ?>" class="btn btn-warning mr-1" id="editButton">Edit</button>
-                                <a href="#" class="btn btn-danger ml-1" id="deleteButton">Hapus</button>
-                            </td>                      
+                                <a href="<?= base_url('arsip/edit_arsip_page/' . $arsip->kode_arsip); ?>" class="btn btn-warning" id="editButton">Edit</a>
+                                <button type="button" class="btn btn-danger" id="deleteButton" data-toggle="modal" data-target="#deleteModal<?= $arsip->kode_arsip ?>">Hapus</button>
+                            </td>
                         </tr>
                         <?php } ?>
                     </table>
 
-                    <!-- Add Modal Akun -->
-                    <!-- <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                   <!-- Delete Modal Arsip -->
+                   <?php $no = 1; ?>
+                    <?php foreach($arsips as $arsip) { $no++; ?>
+                    <div class="modal fade" id="deleteModal<?= $arsip->kode_arsip ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form action="<?php echo base_url('arsip/add_arsip'); ?>" method="post">
+                                <form action="<?= base_url('arsip/delete_arsip'); ?>" method="post">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Insert Arsip</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Delete Bisnis Unit</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="kodeArsipAdd">Kode Arsip</label>
-                                        <input type="text" class="form-control" id="kodeArsipAdd" name="kode-arsip" autocomplete="off">
-                                    </div>  
-                                    <div class="form-group">
-                                        <label for="namaCustomerArsipAdd">Nama Customer</label>
-                                        <input type="text" class="form-control" id="namaCustomerArsipAdd" name="nama-customer-arsip" autocomplete="off">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="bisnisUnitArsipAdd">Bisnis Unit</label>
-                                        <input type="text" class="form-control" id="bisnisUnitArsipAdd" name="bisnis-unit-arsip" autocomplete="off">
-                                        <a class="btn btn-secondary" id="bisnisUnitArsipAdd" data-toggle="modal" data-target="#displayBisnisUnitModal">Pilih...</a>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="tanggalArsipAdd">Tanggal Arsip</label>
-                                        <input type="date" class="form-control" id="tanggalArsipAdd" name="tanggal-arsip" autocomplete="off">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="fileArsipAdd">File Arsip</label>
-                                        <input type="text" class="form-control" id="fileArsipAdd" name="file-arsip" autocomplete="off">
-                                    </div>
+                                    <input type="hidden" name="kode-arsip" value="<?= $arsip->kode_arsip ?>">
+                                    <p>Apakah Anda yakin akan menghapus data ini ?</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -85,32 +68,9 @@
                                 </form>
                             </div>
                         </div>
-                    </div> -->
-                    <!-- End of Add Modal Akun -->
-
-                    <!-- Add Modal Akun -->
-                    <div class="modal fade" id="displayBisnisUnitModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <!-- <form action="#" method="post"> -->
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Insert Arsip</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    ...
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Save changes</button>
-                                </div>
-                                <!-- </form> -->
-                            </div>
-                        </div>
                     </div>
-                    <!-- End of Add Modal Akun -->
+                    <?php } ?>
+                    <!-- End of Delete Modal Bisnis Unit -->
 
 
          
@@ -152,13 +112,13 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="<?php echo base_url('login/log_out') ?>">Logout</a>
+                    <a class="btn btn-primary" href="<?= base_url('login/log_out') ?>">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="<?= base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
             $('.nav-dashboard').attr('class', 'nav-item nav-dashboard');
