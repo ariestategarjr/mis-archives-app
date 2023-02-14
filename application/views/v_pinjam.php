@@ -8,6 +8,11 @@
                         <i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
 
+                    <!-- Button trigger Add Modal Akun -->
+                    <a href="<?= base_url('pinjam/add_pinjam_page'); ?>" class="btn btn-success">
+                        Tambah Pinjam Baru
+                    </a>
+
 
          
             </div>

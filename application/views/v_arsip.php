@@ -8,14 +8,13 @@
                     </div>
 
                     <!-- Button trigger Add Modal Akun -->
-                    <a href="<?= base_url('arsip/add_arsip_page'); ?>" class="btn btn-success">
+                    <a href="<?= base_url('arsip/add_arsip_page'); ?>" class="btn btn-success mb-3">
                         Tambah Arsip Baru
                     </a>
 
-                    <!-- jkljkjjlkjkljljk -->
-
-                    <!-- Table Akun -->
-                    <table class="table table-responsive table-striped">
+                    <!-- Table Arsip -->
+                    <table class="table table-responsive" id="dataTables">
+                        <thead>
                         <tr>
                             <th>No</th>
                             <th>Kode Arsip</th>
@@ -25,6 +24,9 @@
                             <th>File Arsip</th>
                             <th>Aksi</th>
                         </tr>
+                        </thead>
+
+                        <tbody>
                         <?php $no = 1; ?>
                         <?php foreach($arsips as $arsip) { ?>
                         <tr>
@@ -42,6 +44,7 @@
                             </td>
                         </tr>
                         <?php } ?>
+                        </tbody>
                     </table>
 
                    <!-- Delete Modal Arsip -->

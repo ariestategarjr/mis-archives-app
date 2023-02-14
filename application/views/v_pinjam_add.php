@@ -55,37 +55,6 @@
                             </div>
                         </div>
                     </form>
-
-                    <!-- <table class="table table-responsive" id="dataTables">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Id Customer</th>
-                                <th>NIK</th>
-                                <th>Nama Customer</th>
-                                <th>Alamat</th>
-                                <th>Tanggal Lahir</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <?php $no = 1; ?>
-                            <?php foreach($customers as $customer) { ?>
-                            <tr>
-                                <td><?php echo $no++ ?></td>
-                                <td><?php echo $customer->id_customer ?></td>
-                                <td><?php echo $customer->nik ?></td>
-                                <td><?php echo $customer->nama_customer ?></td>
-                                <td><?php echo $customer->alamat ?></td>
-                                <td><?php echo $customer->tanggal_lahir ?></td>
-                                <td>
-                                    <a>Select</a>
-                                </td>
-                            </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table> -->
              
 
                     <!-- Add Modal Akun -->
@@ -99,7 +68,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <table class="table table-responsive" id="dataTables">
+                                    <table class="table table-responsive">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
@@ -108,7 +77,6 @@
                                                 <th>Nama Customer</th>
                                                 <th>Alamat</th>
                                                 <th>Tanggal Lahir</th>
-                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -182,7 +150,7 @@
         </div>
     </div>
 
-    <script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script> -->
+    <script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
             $('.nav-dashboard').attr('class', 'nav-item nav-dashboard');
