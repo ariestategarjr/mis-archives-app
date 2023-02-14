@@ -74,7 +74,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <table class="table table-responsive">
+                                    <table class="table table-responsive" id="dataTables">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
@@ -83,6 +83,7 @@
                                                 <th>Nama Customer</th>
                                                 <th>Alamat</th>
                                                 <th>Tanggal Lahir</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
