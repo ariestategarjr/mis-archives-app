@@ -36,7 +36,7 @@
                             <td><?= $arsip->bisnis_unit ?></td>
                             <td><?= $arsip->tgl_arsip ?></td>
                             <td>
-                                <a href="<?= base_url(); ?>file_upload/<?= $arsip->file_arsip ?>" download><?= $arsip->file_arsip ?></a>
+                                <a href="<?= base_url(); ?>upload/<?= $arsip->file_arsip ?>" download><?= $arsip->file_arsip ?></a>
                             </td>
                             <td colspan="2">
                                 <a href="<?= base_url('arsip/edit_arsip_page/' . $arsip->kode_arsip); ?>" class="btn btn-warning" id="editButton">Edit</a>

@@ -44,7 +44,8 @@
                         <div class="form-group row">
                             <label for="fileArsipAdd" class="col-sm-2 col-form-label">File Arsip</label>
                             <div class="col-sm-4">
-                                <input type="file" id="fileArsipAdd" name="file-arsip" autocomplete="off" required>
+                                <input type="file" id="fileArsipAdd" name="file-arsip" accept=".pdf" autocomplete="off" required>
+                                <p>Maximal 10MB</p>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -184,15 +185,30 @@
 
     <script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script> -->
     <script>
+        let uniqueKodeArsip = "AP" + Math.random().toString(8).slice(4);
+
+        let currentTime = new Date();
+        let dd = ("0" + currentTime .getDate()).slice(-2);
+        let mm = ("0" + (currentTime .getMonth() + 1)).slice(-2);
+        let currentDate = currentTime .getFullYear()+"-"+(mm)+"-"+(dd) ;
+
         $(document).ready(function(){
+            // side active effect
             $('.nav-dashboard').attr('class', 'nav-item nav-dashboard');
             $('.nav-arsip').attr('class', 'nav-item nav-arsip active');
 
+            // select customer table
             $(document).on('click', '#selectButton', function() {
                 const namaCustomer = $(this).data('nama-customer');
-                
                 $('#namaCustomerArsipAdd').val(namaCustomer);
                 $('#displayCustomerModal').modal('hide');
             });
+
+            // set unique kode_arsip 
+            $('#kodeArsipAdd').val(uniqueKodeArsip);
+
+            // set default date value 
+            $('#tanggalArsipAdd').val(currentDate);
+            
         });
     </script>

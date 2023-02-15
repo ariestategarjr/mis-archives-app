@@ -52,8 +52,10 @@ class Arsip extends CI_Controller
         $file_arsip = $_FILES['file-arsip']['name'];
 
         if($file_arsip) {
-            $config ['upload_path'] = './file_upload';
+            $config ['upload_path'] = './upload';
             $config ['allowed_types'] = 'pdf';
+            $config['overwrite'] = true;
+            $config['max_size'] = 10024;
 
             $this->load->library('upload', $config);
             if(!$this->upload->do_upload('file-arsip')){

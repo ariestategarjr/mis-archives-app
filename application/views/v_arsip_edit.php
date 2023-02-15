@@ -28,12 +28,11 @@
                         <div class="form-group row">
                             <label for="bisnisUnitArsipAdd " class="col-sm-2 col-form-label">Bisnis Unit</label>
                             <select class="form-control col-sm-5 ml-2" id="bisnisUnitArsipAdd" name="bisnis-unit" required>
-                                <option value="<?= $arsip->bisnis_unit ?>">
+                                <option id="defaultOption" value="<?= $arsip->bisnis_unit ?>">
                                     <?php echo $arsip->bisnis_unit ?>
-                                    <!-- --Pilih-- -->
                                 </option>
                                 <?php foreach($bisnis_units as $bisnis_unit) { ?>
-                                <option value="<?php echo $bisnis_unit->nama_bisnis_unit?>">
+                                <option id="otherOption" value="<?php echo $bisnis_unit->nama_bisnis_unit?>">
                                     <?php echo $bisnis_unit->nama_bisnis_unit ?>
                                 </option>
                                 <?php } ?>
@@ -170,7 +169,14 @@
                 $('#namaCustomerArsipAdd').val(namaCustomer);
                 $('#displayCustomerModal').modal('hide');
             });
+        });
 
-            
+        // hidden option
+        const defaultOption = document.querySelector('#defaultOption');
+        const otherOption = document.querySelectorAll('#otherOption');
+        otherOption.forEach((option) => {
+            if(option.value === defaultOption.value) {
+                option.setAttribute('hidden', true);
+            }
         });
     </script>
