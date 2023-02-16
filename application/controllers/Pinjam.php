@@ -1,24 +1,24 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Arsip extends CI_Controller
+class Pinjam extends CI_Controller
 {
     function __construct() {
         parent::__construct();
         if($this->session->userdata('status') !== "login") {
             redirect(base_url('login'));
         }
-        $this->load->model('m_arsip');
+        $this->load->model('m_pinjam');
         $this->load->model('m_customer');
-        $this->load->model('m_bisnis_unit');
+        $this->load->model('m_karyawan');
     }
 
     public function index() {   
-        $data['arsips'] = $this->m_arsip->get_arsip('tb_arsip')->result();
+        $data['pinjams'] = $this->m_pinjam->get_pinjam('tb_pinjam')->result();
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
-        $this->load->view('v_arsip', $data);
+        $this->load->view('v_pinjam', $data);
         $this->load->view('templates/footer');
     }
 

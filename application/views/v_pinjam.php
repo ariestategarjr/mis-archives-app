@@ -13,8 +13,43 @@
                         Tambah Pinjam Baru
                     </a>
 
+                    <!-- Table Pinjam -->
+                    <table class="table table-responsive" id="dataTables">
+                        <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Kode Pinjam</th>
+                            <th>Id Karyawan</th>
+                            <th>Nama Karyawan</th>
+                            <th>Kode Arsip</th>
+                            <th>Nama Customer</th>
+                            <th>Tanggal Pinjam</th>
+                            <th>Tanggal Kembali</th>
+                            <th>Aksi</th>
+                        </tr>
+                        </thead>
 
-         
+                        <tbody>
+                        <?php $no = 1; ?>
+                        <?php foreach($pinjams as $pinjam) { ?>
+                        <tr>
+                            <td><?= $no++; ?></td>
+                            <td><?= $pinjam->kode_pinjam ?></td>
+                            <td><?= $pinjam->id_karyawan ?></td>
+                            <td><?= $pinjam->nama_karyawan ?></td>
+                            <td><?= $pinjam->kode_arsip ?></td>
+                            <td><?= $pinjam->nama_customer ?></td>
+                            <td><?= $pinjam->tgl_pinjam ?></td>
+                            <td><?= $pinjam->tgl_kembali ?></td>
+                            <td colspan="2">
+                                <a href="<?= base_url('pinjam/edit_pinjam_page/' . $pinjam->kode_pinjam); ?>" class="btn btn-warning" id="editButton">Edit</a>
+                                <button type="button" class="btn btn-danger" id="deleteButton" data-toggle="modal" data-target="#deleteModal<?= $arsip->kode_arsip ?>">Hapus</button>
+                            </td>
+                        </tr>
+                        <?php } ?>
+                        </tbody>
+                    </table>
+
             </div>
             <!-- End of Main Content -->
 
