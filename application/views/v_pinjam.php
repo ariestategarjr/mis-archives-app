@@ -21,7 +21,7 @@
                             <th>Kode Pinjam</th>
                             <th>Id Karyawan</th>
                             <th>Nama Karyawan</th>
-                            <th>Kode Arsip</th>
+                            <th>File Arsip</th>
                             <th>Nama Customer</th>
                             <th>Tanggal Pinjam</th>
                             <th>Tanggal Kembali</th>
@@ -37,7 +37,7 @@
                             <td><?= $pinjam->kode_pinjam ?></td>
                             <td><?= $pinjam->id_karyawan ?></td>
                             <td><?= $pinjam->nama_karyawan ?></td>
-                            <td><?= $pinjam->kode_arsip ?></td>
+                            <td><?= $pinjam->file_arsip ?></td>
                             <td><?= $pinjam->nama_customer ?></td>
                             <td><?= $pinjam->tgl_pinjam ?></td>
                             <td><?= $pinjam->tgl_kembali ?></td>
