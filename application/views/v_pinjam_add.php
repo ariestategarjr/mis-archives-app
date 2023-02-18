@@ -8,7 +8,7 @@
                     </div>
 
                     <!-- Form Tambah Pinjam -->
-                    <form action="<?php echo base_url('arsip/add_pinjam'); ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?= base_url('arsip/add_pinjam'); ?>" method="post" enctype="multipart/form-data">
                         <div class="form-group row">
                             <label for="kodePinjamAdd" class="col-sm-2 col-form-label">Kode Pinjam</label>
                             <div class="col-sm-5">
@@ -54,6 +54,13 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="durasiAdd" class="col-sm-2 col-form-label">Durasi</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="durasiAdd" name="durasi" autocomplete="off" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="tanggalKembaliAdd" class="col-sm-2 col-form-label">Tanggal Kembali</label>
                             <div class="col-sm-4">
                                 <input type="date" class="form-control" id="tanggalKembaliAdd" name="tanggal-kembali" autocomplete="off" required>
@@ -81,28 +88,30 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <table class="table table-responsive" id="dataTables">
+                                    <table class="table table-responsive" id="dataTablesOther">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
                                                 <th>Id Karyawan</th>
                                                 <th>Nama Karyawan</th>
                                                 <th>Jabatan</th>
-                                                <th></th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php $no = 1; ?>
                                             <?php foreach($karyawans as $karyawan) { ?>
                                             <tr>
-                                                <td><?php echo $no++; ?></td>
-                                                <td><?php echo $karyawan->id_karyawan ?></td>
-                                                <td><?php echo $karyawan->nama_karyawan ?></td>
-                                                <td><?php echo $karyawan->jabatan ?></td>
+                                                <td><?= $no++; ?></td>
+                                                <td><?= $karyawan->id_karyawan ?></td>
+                                                <td><?= $karyawan->nama_karyawan ?></td>
+                                                <td><?= $karyawan->jabatan ?></td>
                                                 <td>
-                                                    <button type="button" class="btn btn-primary" id="selectButton" 
-                                                    data-toggle="modal" data-target="#selectModal<?php echo $karyawan->id_karyawan ?>"
-                                                    data-nama-karyawan="<?php echo $karyawan->nama_karyawan ?>">Select
+                                                    <button type="button" class="btn btn-primary" id="selectButtonKaryawan" 
+                                                    data-toggle="modal" data-target="#selectModal<?= $karyawan->id_karyawan ?>"
+                                                    data-id-karyawan="<?= $karyawan->id_karyawan ?>"
+                                                    data-nama-karyawan="<?= $karyawan->nama_karyawan ?>">
+                                                        Select
                                                     </button>
                                                 </td>
                                             </tr>
@@ -136,24 +145,25 @@
                                                 <th>Bisnis Unit</th>
                                                 <th>Tanggal Arsip</th>
                                                 <th>File Arsip</th>
-                                                <!-- <th>Aksi</th> -->
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php $no = 1; ?>
                                             <?php foreach($arsips as $arsip) { ?>
                                             <tr>
-                                                <td><?php echo $no++; ?></td>
-                                                <td><?php echo $arsip->kode_arsip ?></td>
-                                                <td><?php echo $arsip->nama_customer ?></td>
-                                                <td><?php echo $arsip->bisnis_unit ?></td>
-                                                <td><?php echo $arsip->tgl_arsip ?></td>
-                                                <td><?php echo $arsip->file_arsip ?></td>
-                                                
+                                                <td><?= $no++; ?></td>
+                                                <td><?= $arsip->kode_arsip ?></td>
+                                                <td><?= $arsip->nama_customer ?></td>
+                                                <td><?= $arsip->bisnis_unit ?></td>
+                                                <td><?= $arsip->tgl_arsip ?></td>
+                                                <td><?= $arsip->file_arsip ?></td>
                                                 <td>
-                                                    <button type="button" class="btn btn-primary" id="selectButton" 
-                                                    data-toggle="modal" data-target="#selectModal<?php echo $arsip->kode_arsip ?>"
-                                                    data-file-arsip="<?php echo $arsip->file_arsip ?>">Select
+                                                    <button type="button" class="btn btn-primary" id="selectButtonArsip" 
+                                                    data-toggle="modal" data-target="#selectModal<?= $arsip->kode_arsip ?>"
+                                                    data-file-arsip="<?= $arsip->file_arsip ?>"
+                                                    data-nama-customer="<?= $arsip->nama_customer ?>">
+                                                        Select
                                                     </button>
                                                 </td>
                                             </tr>
@@ -205,23 +215,57 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="<?php echo base_url('login/log_out') ?>">Logout</a>
+                    <a class="btn btn-primary" href="<?= base_url('login/log_out') ?>">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="<?= base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
     <script>
+        let uniqueKodePinjam = "PJ" + Math.random().toString(8).slice(4);
+
+        let currentTime = new Date();
+        let dd = ("0" + currentTime .getDate()).slice(-2);
+        let mm = ("0" + (currentTime .getMonth() + 1)).slice(-2);
+        let currentDate = currentTime .getFullYear()+"-"+(mm)+"-"+(dd);
+
+        
+
         $(document).ready(function(){
             $('.nav-dashboard').attr('class', 'nav-item nav-dashboard');
             $('.nav-pinjam').attr('class', 'nav-item nav-pinjam active');
 
-            $(document).on('click', '#selectButton', function() {
-                const namaCustomer = $(this).data('nama-customer');
+            $('#kodePinjamAdd').val(uniqueKodePinjam);
+            $('#tanggalPinjamAdd').val(currentDate);
+
+            $(document).on('click', '#selectButtonKaryawan', function() {
+                const idKaryawan = $(this).data('id-karyawan');
+                const namaKaryawan = $(this).data('nama-karyawan');
                 
-                $('#namaCustomerArsipAdd').val(namaCustomer);
-                $('#displayCustomerModal').modal('hide');
+                $('#idKaryawanAdd').val(idKaryawan);
+                $('#namaKaryawanAdd').val(namaKaryawan);
+                $('#displayKaryawanModal').modal('hide');
+            });
+
+            $(document).on('click', '#selectButtonArsip', function() {
+                const fileArsip = $(this).data('file-arsip');
+                const namaCustomer = $(this).data('nama-customer');
+
+                $('#fileArsipAdd').val(fileArsip);
+                $('#namaCustomerAdd').val(namaCustomer);
+                $('#displayArsipModal').modal('hide');
+            });
+
+            // let durasi = document.getElementById('durasiAdd').value;
+            $(document).on('change', '#durasiAdd', function() {
+                // const durasi = Number($(this).text());
+                // const durasi = document.getElementById('#durasiAdd').innerText;
+                // const durasi = $(this);
+                
+                // let afterDate = durasi + currentDate;
+                console.log(durasi);
+                // $('#tanggalKembaliAdd').val(durasi);
             });
         });
     </script>

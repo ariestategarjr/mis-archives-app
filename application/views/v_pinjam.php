@@ -24,6 +24,7 @@
                             <th>File Arsip</th>
                             <th>Nama Customer</th>
                             <th>Tanggal Pinjam</th>
+                            <th>Durasi</th>
                             <th>Tanggal Kembali</th>
                             <th>Aksi</th>
                         </tr>
@@ -40,6 +41,7 @@
                             <td><?= $pinjam->file_arsip ?></td>
                             <td><?= $pinjam->nama_customer ?></td>
                             <td><?= $pinjam->tgl_pinjam ?></td>
+                            <td><?= $pinjam->durasi ?></td>
                             <td><?= $pinjam->tgl_kembali ?></td>
                             <td colspan="2">
                                 <a href="<?= base_url('pinjam/edit_pinjam_page/' . $pinjam->kode_pinjam); ?>" class="btn btn-warning" id="editButton">Edit</a>

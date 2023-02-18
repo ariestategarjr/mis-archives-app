@@ -21,6 +21,7 @@
     <script>
         $(document).ready(function() {
             $('#dataTables').DataTable();
+            $('#dataTablesOther').DataTable();
         } );
     </script>
 

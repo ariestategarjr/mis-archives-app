@@ -110,7 +110,9 @@ class Arsip extends CI_Controller
 
     public function delete_arsip() {
         $kode_arsip = $this->input->post('kode-arsip');
-        // echo $kode_arsip;
+        $data['arsip'] = $this->db->get_where('tb_arsip', array('kode_arsip' => $kode_arsip))->row();
+
+        unlink(FCPATH."/upload/" . $data['arsip']->file_arsip);
         $this->m_arsip->delete_arsip($kode_arsip);
         redirect(base_url('arsip'));
     }

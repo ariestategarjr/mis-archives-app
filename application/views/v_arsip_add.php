@@ -190,7 +190,7 @@
         let currentTime = new Date();
         let dd = ("0" + currentTime .getDate()).slice(-2);
         let mm = ("0" + (currentTime .getMonth() + 1)).slice(-2);
-        let currentDate = currentTime .getFullYear()+"-"+(mm)+"-"+(dd) ;
+        let currentDate = currentTime .getFullYear()+"-"+(mm)+"-"+(dd);
 
         $(document).ready(function(){
             // side active effect
