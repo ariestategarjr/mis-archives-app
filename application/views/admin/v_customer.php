@@ -107,7 +107,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="addressCustomerEdit">Alamat</label>
-                                        <textarea class="form-control" id="addressCustomerEdit" rows="3" name="alamat" placeholder="<?php echo $customer->alamat ?>" autocomplete="off" required></textarea>
+                                        <textarea class="form-control" id="addressCustomerEdit" rows="3" name="alamat" placeholder="" autocomplete="off" required><?php echo $customer->alamat ?></textarea>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -199,68 +199,5 @@
         $(document).ready(function() {
             $('.nav-dashboard').attr('class', 'nav-item nav-dashboard');
             $('.nav-customer').attr('class', 'nav-item nav-customer active');
-
-            
-            // const editButtons = document.querySelectorAll('#editButton');
-            // const addressCustomers = document.querySelectorAll('#addressCustomer');
-            // const addressCustomerEdits = document.querySelectorAll('#addressCustomerEdit');
-            // editButtons.forEach((editButton) => {
-            //     editButton.addEventListener('click', () => {
-            //         addressCustomerEdits.forEach((addressCustomerEdit) => {
-            //             addressCustomers.forEach((addressCustomer) => {
-            //                 addressCustomerEdit.innerText = addressCustomer.innerText;
-            //             })
-            //         });
-            //     });
-            // });
-            // const editButtons = $(document).find('#editButton').length;
-            // console.log(editButtons);
-            // $(document).on('click', '#editButton', function() {
-            //     const addressCustomer = $('#addressCustomer').text();
-
-            //     $('#addressCustomerEdit').val(addressCustomer);
-            // });
         });
-        // const navDashboard = document.querySelector('.nav-dashboard');
-        // const navCustomer = document.querySelector('.nav-customer');
-        
-        // navDashboard.setAttribute('class', 'nav-item nav-dashboard');
-        // navCustomer.setAttribute('class', 'nav-item nav-customer active');
-        // $('#tableCustomer').on('click', '#editButton', function() {
-        //     const id_customer = $(this).data('id_customer');
-        //     $('#idCustomerEdit').val(id_customer);
-        //     // console.log($('#idCustomerEdit'));
-        // });
-        // const editButtons = document.querySelectorAll('#editButton');
-
-        // const idCustomers = document.querySelectorAll('#idCustomer');
-        // const nikCustomers = document.querySelectorAll('#nikCustomer');
-        // const nameCustomers = document.querySelectorAll('#nameCustomer');
-        // const addressCustomers = document.querySelectorAll('#addressCustomer');
-        // const dateCustomers = document.querySelectorAll('#dateCustomer');
-        
-        // const idCustomerEdit = document.querySelector('#idCustomerEdit');
-        // const nikCustomerEdit = document.querySelector('#nikCustomerEdit');
-        // const nameCustomerEdit = document.querySelector('#nameCustomerEdit');
-        // const addressCustomerEdit = document.querySelector('#addressCustomerEdit');
-        // const dateCustomerEdit = document.querySelector('#dateCustomerEdit');
-        
-        // editButtons.forEach((editButton, index) => {
-        //     editButton.addEventListener('click', (event) => {
-        //         event.preventDefault();
-                
-        //         const idCustomer = idCustomers[index].innerText;
-        //         const nikCustomer = nikCustomers[index].innerText;
-        //         const nameCustomer = nameCustomers[index].innerText;
-        //         const addressCustomer = addressCustomers[index].innerText;
-        //         const dateCustomer = dateCustomers[index].innerText;
-
-        //         idCustomerEdit.value = idCustomer;
-        //         nikCustomerEdit.value = nikCustomer;
-        //         nameCustomerEdit.value = nameCustomer;
-        //         addressCustomerEdit.value = addressCustomer;
-        //         dateCustomerEdit.value = dateCustomer;
-        //     }); 
-        // });
-        // console.log(idCustomerInput.value);
     </script>
