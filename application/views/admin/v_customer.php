@@ -9,7 +9,7 @@
                     <table class="table table-bordered" id="tableCustomer">
                         <tr>
                             <th>No</th>
-                            <th>Id</th>
+                            <th>Id Customer</th>
                             <th>NIK</th>
                             <th>Nama</th>
                             <th>Tanggal Lahir</th>

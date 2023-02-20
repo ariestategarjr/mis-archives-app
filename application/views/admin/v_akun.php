@@ -57,7 +57,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="statusAkunAdd">Status</label>
-                                        <input type="text" class="form-control" id="statusAkunAdd" name="status-akun">
+                                        <select class="form-control" name="status-akun" id="statusAkunAdd">
+                                            <option value="" <?php if(set_value('status-akun' == '')) : echo 'selected'; endif ?>>--Pilih--</option>
+                                            <option value="admin" <?php if(set_value('status-akun' == 'admin')) : echo 'selected'; endif ?>>Admin</option>
+                                            <option value="user" <?php if(set_value('status-akun' == 'user')) : echo 'selected'; endif ?>>User</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -96,7 +100,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="statusAkunEdit">Status</label>
-                                        <input type="text" class="form-control" id="statusAkunEdit" name="status-akun" value="<?php echo $akun->status ?>">
+                                        <select class="form-control" name="status-akun" id="statusAkunEdit">
+                                            <option id="defaultOption" value=""><?php echo $akun->status ?></option>
+                                            <option id="defaultOption" value="admin" <?php if(set_value('status-akun' == 'admin')) : echo 'selected'; endif ?>>Admin</option>
+                                            <option id="defaultOption" value="user" <?php if(set_value('status-akun' == 'user')) : echo 'selected'; endif ?>>User</option>
+                                        </select>                                    
                                     </div>
                                 </div>
                                 <div class="modal-footer">
