@@ -102,8 +102,8 @@
                                         <label for="statusAkunEdit">Status</label>
                                         <select class="form-control" name="status-akun" id="statusAkunEdit">
                                             <option id="defaultOption" value=""><?php echo $akun->status ?></option>
-                                            <option id="defaultOption" value="admin" <?php if(set_value('status-akun' == 'admin')) : echo 'selected'; endif ?>>Admin</option>
-                                            <option id="defaultOption" value="user" <?php if(set_value('status-akun' == 'user')) : echo 'selected'; endif ?>>User</option>
+                                            <option id="adminOption" value="admin" <?php if(set_value('status-akun' == 'admin')) : echo 'selected'; endif ?>>Admin</option>
+                                            <option id="userOption" value="user" <?php if(set_value('status-akun' == 'user')) : echo 'selected'; endif ?>>User</option>
                                         </select>                                    
                                     </div>
                                 </div>
@@ -190,10 +190,23 @@
         </div>
     </div>
 
+    <script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
     <script>
         const navDashboard = document.querySelector('.nav-dashboard');
-        const navKaryawan = document. querySelector('.nav-akun');
+        const navAkun = document.querySelector('.nav-akun');
 
         navDashboard.setAttribute('class', 'nav-item nav-dashboard');
-        navKaryawan.setAttribute('class', 'nav-item nav-akun active');
+        navAkun.setAttribute('class', 'nav-item nav-akun active');
+
+        $(document).ready(function() {
+            let defaultOption = $('#defaultOption');
+            let adminOption = $('#adminOption');
+            let userOption = $('#userOption');
+
+            if(defaultOption.text() === 'admin') {
+                adminOption.attr('hidden', true);
+            } else {
+                userOption.attr('hidden', true);
+            }
+        });
     </script>
