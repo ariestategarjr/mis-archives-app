@@ -116,4 +116,5 @@ class Arsip extends CI_Controller
         $this->m_arsip->delete_arsip($kode_arsip);
         redirect(base_url('arsip'));
     }
+    
 }
