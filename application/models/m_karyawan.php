@@ -7,6 +7,10 @@ class M_karyawan extends CI_Model
         return $this->db->get($table);
     }
 
+    public function get_karyawan($table) {
+        return $this->db->get($table);
+    }
+
     public function insert_karyawan($table, $data) {
         $this->db->insert($table, $data);
     }

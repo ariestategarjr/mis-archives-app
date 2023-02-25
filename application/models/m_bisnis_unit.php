@@ -7,10 +7,6 @@ class M_bisnis_unit extends CI_Model
         return $this->db->get($table);
     }
 
-    // public function find_customer($table, $where) {
-    //     return $this->db->get_where($table, $where);
-    // }
-
     public function insert_bisnis_unit($table, $data) {
         $this->db->insert($table, $data);
     }

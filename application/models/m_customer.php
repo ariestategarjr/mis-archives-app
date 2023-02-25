@@ -7,9 +7,9 @@ class M_customer extends CI_Model
         return $this->db->get($table);
     }
 
-    // public function find_customer($table, $where) {
-    //     return $this->db->get_where($table, $where);
-    // }
+    public function get_customer($table) {
+        return $this->db->get($table);
+    }
 
     public function insert_customer($table, $data) {
         $this->db->insert($table, $data);
