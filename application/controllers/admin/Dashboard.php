@@ -11,7 +11,6 @@ class Dashboard extends CI_Controller
         $this->load->model('m_customer');
         $this->load->model('m_karyawan');
         $this->load->model('m_bisnis_unit');
-        $this->load->model('m_akun');
     }
 
     public function index() { 

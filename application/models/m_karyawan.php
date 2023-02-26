@@ -3,10 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_karyawan extends CI_Model 
 {
-    public function select_karyawan($table) {
-        return $this->db->get($table);
-    }
-
     public function get_karyawan($table) {
         return $this->db->get($table);
     }

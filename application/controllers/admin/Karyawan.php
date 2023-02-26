@@ -12,7 +12,7 @@ class Karyawan extends CI_Controller
     }
 
     public function index() {   
-        $data['karyawans'] = $this->m_karyawan->select_karyawan('tb_karyawan')->result();
+        $data['karyawans'] = $this->m_karyawan->get_karyawan('tb_karyawan')->result();
 
         $this->load->view('admin/templates/header');
         $this->load->view('admin/templates/sidebar');

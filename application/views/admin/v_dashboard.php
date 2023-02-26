@@ -45,7 +45,6 @@
                             </div>
                         </div>
 
-
                         <!-- Pending Requests Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
@@ -63,10 +62,10 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <!-- /.container-fluid -->
-
             </div>
             <!-- End of Main Content -->
 
@@ -105,7 +104,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="<?php echo base_url('login/log_out') ?>">Logout</a>
+                    <a class="btn btn-primary" href="<?= base_url('login/log_out') ?>">Logout</a>
                 </div>
             </div>
         </div>

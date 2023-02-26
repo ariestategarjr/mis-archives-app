@@ -7,10 +7,6 @@ class M_akun extends CI_Model
         return $this->db->get($table);
     }
 
-    // public function find_customer($table, $where) {
-    //     return $this->db->get_where($table, $where);
-    // }
-
     public function insert_akun($table, $data) {
         $this->db->insert($table, $data);
     }

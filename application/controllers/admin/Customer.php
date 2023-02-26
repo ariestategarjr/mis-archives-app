@@ -12,7 +12,7 @@ class Customer extends CI_Controller
     }
 
     public function index() {
-        $data['customers'] = $this->m_customer->select_customer('tb_customer')->result();
+        $data['customers'] = $this->m_customer->get_customer('tb_customer')->result();
 
         $this->load->view('admin/templates/header');
         $this->load->view('admin/templates/sidebar');
@@ -38,10 +38,6 @@ class Customer extends CI_Controller
         $this->m_customer->insert_customer('tb_customer', $data_customer);
         redirect(base_url('admin/customer'));
     }
-
-    // public function find_customer() {
-    //     $data['customer'] = $this->m_customer->find_customer('customer', $where)->result();
-    // }
 
     public function edit_customer() {
         $id_customer = $this->input->post('id-customer');

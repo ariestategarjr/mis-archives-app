@@ -3,27 +3,30 @@
                     <!-- Button trigger Add Modal Karyawan -->
                     <button class="btn btn-success" data-toggle="modal" data-target="#addModal">Tambah Karyawan Baru</button>
                     
-                    <table class="table table-bordered">
-                        <!-- id_karyawan	nama_karyawan	jabatan	 -->
-                        <tr>
-                            <th>No</th>
-                            <th>Id Karyawan</th>
-                            <th>Nama Karyawan</th>
-                            <th>Jabatan</th>
-                            <th>Aksi</th>
-                        </tr>
-                        <?php $no = 1; ?>
-                        <?php foreach($karyawans as $karyawan) { ?>
-                        <tr>
-                            <td><?php echo $no++; ?></td>
-                            <td><?php echo $karyawan->id_karyawan ?></td>
-                            <td><?php echo $karyawan->nama_karyawan ?></td>
-                            <td><?php echo $karyawan->jabatan ?></td>
-                            <td colspan="2">
-                                <button type="button" class="btn btn-warning" id="editButton" data-toggle="modal" data-target="#editModal<?php echo $karyawan->id_karyawan ?>">Edit</button>
-                                <button type="button" class="btn btn-danger" id="deleteButton" data-toggle="modal" data-target="#deleteModal<?php echo $karyawan->id_karyawan ?>">Hapus</button>
-                            </td>
-                        </tr>
+                    <table class="table table-bordered" id="tableKaryawan">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Id Karyawan</th>
+                                <th>Nama Karyawan</th>
+                                <th>Jabatan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $no = 1; ?>
+                            <?php foreach($karyawans as $karyawan) { ?>
+                            <tr>
+                                <td><?= $no++; ?></td>
+                                <td><?= $karyawan->id_karyawan ?></td>
+                                <td><?= $karyawan->nama_karyawan ?></td>
+                                <td><?= $karyawan->jabatan ?></td>
+                                <td colspan="2">
+                                    <button type="button" class="btn btn-warning" id="editButton" data-toggle="modal" data-target="#editModal<?= $karyawan->id_karyawan ?>">Edit</button>
+                                    <button type="button" class="btn btn-danger" id="deleteButton" data-toggle="modal" data-target="#deleteModal<?= $karyawan->id_karyawan ?>">Hapus</button>
+                                </td>
+                            </tr>
+                        </tbody>
                         <?php } ?>
                     </table>
 
@@ -31,7 +34,7 @@
                     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form action="<?php echo base_url('admin/karyawan/add_karyawan'); ?>" method="post">
+                                <form action="<?= base_url('admin/karyawan/add_karyawan'); ?>" method="post">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Insert Karyawan</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -65,10 +68,10 @@
                     <!-- Edit Modal Karyawan -->
                     <?php $no = 1; ?>
                     <?php foreach($karyawans as $karyawan) { $no++; ?>
-                    <div class="modal fade" id="editModal<?php echo $karyawan->id_karyawan ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editModal<?= $karyawan->id_karyawan ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form action="<?php echo base_url('admin/karyawan/edit_karyawan'); ?>" method="post">
+                                <form action="<?= base_url('admin/karyawan/edit_karyawan'); ?>" method="post">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Update Karyawan</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -76,15 +79,15 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <input type="hidden" class="form-control" id="idKaryawanEdit" name="id-karyawan" value="<?php echo $karyawan->id_karyawan ?>" autocomplete="off" required>
+                                    <input type="hidden" class="form-control" id="idKaryawanEdit" name="id-karyawan" value="<?= $karyawan->id_karyawan ?>" autocomplete="off" required>
                                     
                                     <div class="form-group">
                                         <label for="namaKaryawanEdit">Nama Karyawan</label>
-                                        <input type="text" class="form-control" id="namaKaryawanEdit" name="nama-karyawan" value="<?php echo $karyawan->nama_karyawan ?>" autocomplete="off" required>
+                                        <input type="text" class="form-control" id="namaKaryawanEdit" name="nama-karyawan" value="<?= $karyawan->nama_karyawan ?>" autocomplete="off" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="jabatanKaryawanEdit">Jabatan</label>
-                                        <input type="text" class="form-control" id="jabatanKaryawanEdit" name="jabatan" value="<?php echo $karyawan->jabatan ?>" autocomplete="off" required>
+                                        <input type="text" class="form-control" id="jabatanKaryawanEdit" name="jabatan" value="<?= $karyawan->jabatan ?>" autocomplete="off" required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -101,10 +104,10 @@
                     <!-- Delete Modal Karyawan -->
                     <?php $no = 1; ?>
                     <?php foreach($karyawans as $karyawan) { $no++; ?>
-                    <div class="modal fade" id="deleteModal<?php echo $karyawan->id_karyawan ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="deleteModal<?= $karyawan->id_karyawan ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form action="<?php echo base_url('admin/karyawan/delete_karyawan'); ?>" method="post">
+                                <form action="<?= base_url('admin/karyawan/delete_karyawan'); ?>" method="post">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Delete Karyawan</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -112,7 +115,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <input type="hidden" name="id-karyawan" value="<?php echo $karyawan->id_karyawan ?>">
+                                    <input type="hidden" name="id-karyawan" value="<?= $karyawan->id_karyawan ?>">
                                     <p>Apakah Anda yakin akan menghapus data ini ?</p>
                                 </div>
                                 <div class="modal-footer">
@@ -164,17 +167,16 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="<?php echo base_url('login/log_out') ?>">Logout</a>
+                    <a class="btn btn-primary" href="<?= base_url('login/log_out') ?>">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="<?= base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
     <script>
-        const navDashboard = document.querySelector('.nav-dashboard');
-        const navKaryawan = document. querySelector('.nav-karyawan');
-
-        navDashboard.setAttribute('class', 'nav-item nav-dashboard');
-        navKaryawan.setAttribute('class', 'nav-item nav-karyawan active');
+        $(document).ready(function() {
+            $('.nav-dashboard').attr('class', 'nav-item nav-dashboard');
+            $('.nav-karyawan').attr('class', 'nav-item nav-karyawan active');
+        });
     </script>

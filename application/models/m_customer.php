@@ -3,12 +3,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_customer extends CI_Model
 {
-    public function select_customer($table) {
-        return $this->db->get($table);
-    }
-
     public function get_customer($table) {
-        return $this->db->get($table);
+        return $this->db->order_by('id_customer', 'desc')->get($table);
     }
 
     public function insert_customer($table, $data) {

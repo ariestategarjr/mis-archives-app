@@ -6,32 +6,36 @@
                     </button>
 
                     <!-- Table Bisnis Unit -->
-                    <table class="table table-bordered">
-                        <tr>
-                            <th>No</th>
-                            <th>Kode Bisnis Unit</th>
-                            <th>Nama Bisnis Unit</th>
-                            <th>Aksi</th>
-                        </tr>
-                        <?php $no = 1; ?>
-                        <?php foreach($bisnis_units as $bisnis_unit) { ?>
-                        <tr>
-                            <td><?php echo $no++; ?></td>
-                            <td><?php echo $bisnis_unit->kode_bisnis_unit ?></td>
-                            <td><?php echo $bisnis_unit->nama_bisnis_unit ?></td>
-                            <td colspan="2">
-                                <button type="button" class="btn btn-warning" id="editButton" data-toggle="modal" data-target="#editModal<?php echo $bisnis_unit->kode_bisnis_unit ?>">Edit</button>
-                                <button type="button" class="btn btn-danger" id="deleteButton" data-toggle="modal" data-target="#deleteModal<?php echo $bisnis_unit->kode_bisnis_unit ?>">Hapus</button>
-                            </td>
-                        </tr>
-                        <?php } ?>
+                    <table class="table table-bordered" id="tableBisnisUnit">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Kode Bisnis Unit</th>
+                                <th>Nama Bisnis Unit</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $no = 1; ?>
+                            <?php foreach($bisnis_units as $bisnis_unit) { ?>
+                            <tr>
+                                <td><?= $no++; ?></td>
+                                <td><?= $bisnis_unit->kode_bisnis_unit ?></td>
+                                <td><?= $bisnis_unit->nama_bisnis_unit ?></td>
+                                <td colspan="2">
+                                    <button type="button" class="btn btn-warning" id="editButton" data-toggle="modal" data-target="#editModal<?= $bisnis_unit->kode_bisnis_unit ?>">Edit</button>
+                                    <button type="button" class="btn btn-danger" id="deleteButton" data-toggle="modal" data-target="#deleteModal<?= $bisnis_unit->kode_bisnis_unit ?>">Hapus</button>
+                                </td>
+                            </tr>
+                            <?php } ?>
+                        </tbody>
                     </table>
 
                     <!-- Add Modal Bisnis Unit -->
                     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form action="<?php echo base_url('admin/bisnis_unit/add_bisnis_unit'); ?>" method="post">
+                                <form action="<?= base_url('admin/bisnis_unit/add_bisnis_unit'); ?>" method="post">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Insert Bisnis Unit</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -41,11 +45,11 @@
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label for="kodeBisnisUnitAdd">Kode Bisnis Unit</label>
-                                        <input type="text" class="form-control" id="kodeBisnisUnitAdd" name="kode-bisnis-unit">
+                                        <input type="text" class="form-control" id="kodeBisnisUnitAdd" name="kode-bisnis-unit" autocomplete="off" required>
                                     </div>  
                                     <div class="form-group">
                                         <label for="namaBisnisUnitAdd">Nama Bisnis Unit</label>
-                                        <input type="text" class="form-control" id="namaBisnisUnitAdd" name="nama-bisnis-unit">
+                                        <input type="text" class="form-control" id="namaBisnisUnitAdd" name="nama-bisnis-unit" autocomplete="off" required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -61,10 +65,10 @@
                     <!-- Edit Modal Bisnis Unit -->
                     <?php $no = 1; ?>
                     <?php foreach($bisnis_units as $bisnis_unit) { $no++; ?>
-                    <div class="modal fade" id="editModal<?php echo $bisnis_unit->kode_bisnis_unit ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editModal<?= $bisnis_unit->kode_bisnis_unit ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form action="<?php echo base_url('admin/bisnis_unit/edit_bisnis_unit'); ?>" method="post">
+                                <form action="<?= base_url('admin/bisnis_unit/edit_bisnis_unit'); ?>" method="post">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Update Bisnis Unit</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -72,11 +76,11 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <input type="hidden" class="form-control" id="idBisnisUnitEdit" name="kode-bisnis-unit" value="<?php echo $bisnis_unit->kode_bisnis_unit ?>">
+                                    <input type="hidden" class="form-control" id="idBisnisUnitEdit" name="kode-bisnis-unit" value="<?= $bisnis_unit->kode_bisnis_unit ?>" autocomplete="off" required>
                                     
                                     <div class="form-group">
                                         <label for="nameBisnisUnitEdit">Nama Bisnis Unit</label>
-                                        <input type="text" class="form-control" id="nameBisnisUnitEdit" name="nama-bisnis-unit" value="<?php echo $bisnis_unit->nama_bisnis_unit ?>">
+                                        <input type="text" class="form-control" id="nameBisnisUnitEdit" name="nama-bisnis-unit" value="<?= $bisnis_unit->nama_bisnis_unit ?>" autocomplete="off" required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -93,10 +97,10 @@
                     <!-- Delete Modal Bisnis Unit -->
                     <?php $no = 1; ?>
                     <?php foreach($bisnis_units as $bisnis_unit) { $no++; ?>
-                    <div class="modal fade" id="deleteModal<?php echo $bisnis_unit->kode_bisnis_unit ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="deleteModal<?= $bisnis_unit->kode_bisnis_unit ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form action="<?php echo base_url('admin/bisnis_unit/delete_bisnis_unit'); ?>" method="post">
+                                <form action="<?= base_url('admin/bisnis_unit/delete_bisnis_unit'); ?>" method="post">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Delete Bisnis Unit</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -104,7 +108,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <input type="hidden" name="kode-bisnis-unit" value="<?php echo $bisnis_unit->kode_bisnis_unit ?>">
+                                    <input type="hidden" name="kode-bisnis-unit" value="<?= $bisnis_unit->kode_bisnis_unit ?>">
                                     <p>Apakah Anda yakin akan menghapus data ini ?</p>
                                 </div>
                                 <div class="modal-footer">
@@ -156,16 +160,16 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="<?php echo base_url('login/log_out') ?>">Logout</a>
+                    <a class="btn btn-primary" href="<?= base_url('login/log_out') ?>">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
+    <script src="<?= base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
     <script>
-        const navDashboard = document.querySelector('.nav-dashboard');
-        const navBisnisUnit = document. querySelector('.nav-bisnis-unit');
-
-        navDashboard.setAttribute('class', 'nav-item nav-dashboard');
-        navBisnisUnit.setAttribute('class', 'nav-item nav-bisnis-unit active');
+        $(document).ready(function() {
+            $('.nav-dashboard').attr('class', 'nav-item nav-dashboard');
+            $('.nav-bisnis-unit').attr('class', 'nav-item nav-bisnis-unit active');
+        });
     </script>

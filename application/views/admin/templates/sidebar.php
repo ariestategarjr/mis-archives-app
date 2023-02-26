@@ -1,5 +1,3 @@
-
-
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -14,9 +12,6 @@
                 <div class="sidebar-brand-text mx-3">Halo, Admin!</div>
             </a>
 
-            <!-- Divider -->
-            <!-- <hr class="sidebar-divider my-0"> -->
-
             <!-- Nav Item - Dashboard -->
             <li class="nav-item nav-dashboard active">
                 <a class="nav-link" href="<?= base_url('admin/dashboard') ?>">
@@ -26,11 +21,6 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <!-- <div class="sidebar-heading">
-                Anggota
-            </div> -->
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item nav-customer">
@@ -48,14 +38,7 @@
                 </a>
             </li>
 
-            <!-- Divider -->
-            <!-- <hr class="sidebar-divider"> -->
-
             <!-- Heading -->
-            <!-- <div class="sidebar-heading">
-                Registrasi
-            </div> -->
-
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item nav-bisnis-unit">
                 <a class="nav-link" href="<?= base_url('admin/bisnis_unit'); ?>">
