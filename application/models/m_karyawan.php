@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class M_karyawan extends CI_Model 
 {
     public function get_karyawan($table) {
-        return $this->db->get($table);
+        return $this->db->order_by('id_karyawan', 'desc')->get($table);
     }
 
     public function insert_karyawan($table, $data) {

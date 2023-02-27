@@ -6,30 +6,32 @@
                     </button>
 
                     <!-- Table Bisnis Unit -->
-                    <table class="table table-bordered" id="tableBisnisUnit">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Kode Bisnis Unit</th>
-                                <th>Nama Bisnis Unit</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $no = 1; ?>
-                            <?php foreach($bisnis_units as $bisnis_unit) { ?>
-                            <tr>
-                                <td><?= $no++; ?></td>
-                                <td><?= $bisnis_unit->kode_bisnis_unit ?></td>
-                                <td><?= $bisnis_unit->nama_bisnis_unit ?></td>
-                                <td colspan="2">
-                                    <button type="button" class="btn btn-warning" id="editButton" data-toggle="modal" data-target="#editModal<?= $bisnis_unit->kode_bisnis_unit ?>">Edit</button>
-                                    <button type="button" class="btn btn-danger" id="deleteButton" data-toggle="modal" data-target="#deleteModal<?= $bisnis_unit->kode_bisnis_unit ?>">Hapus</button>
-                                </td>
-                            </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive-sm">
+                        <table class="table table-bordered table-hover" id="tableBisnisUnit">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Kode Bisnis Unit</th>
+                                    <th>Nama Bisnis Unit</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $no = 1; ?>
+                                <?php foreach($bisnis_units as $bisnis_unit) { ?>
+                                <tr>
+                                    <td><?= $no++; ?></td>
+                                    <td><?= $bisnis_unit->kode_bisnis_unit ?></td>
+                                    <td><?= $bisnis_unit->nama_bisnis_unit ?></td>
+                                    <td colspan="2">
+                                        <button type="button" class="btn btn-warning btn-sm" id="editButton" data-toggle="modal" data-target="#editModal<?= $bisnis_unit->kode_bisnis_unit ?>">Edit</button>
+                                        <button type="button" class="btn btn-danger btn-sm" id="deleteButton" data-toggle="modal" data-target="#deleteModal<?= $bisnis_unit->kode_bisnis_unit ?>">Hapus</button>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
 
                     <!-- Add Modal Bisnis Unit -->
                     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -129,7 +131,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Your Website 2023</span>
                     </div>
                 </div>
             </footer>

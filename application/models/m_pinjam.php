@@ -7,13 +7,8 @@ class M_pinjam extends CI_Model
         return $this->db->get($table);
     }
 
-    // public function find_customer($table, $where) {
-    //     return $this->db->get_where($table, $where);
-    // }
-
     public function insert_pinjam($data) {
         $this->db->insert('tb_pinjam', $data);
-        // return ($this->db->affected_rows() > 0) ? TRUE : FALSE;
     }
 
     public function update_pinjam($data, $id) {

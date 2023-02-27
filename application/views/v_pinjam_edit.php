@@ -2,60 +2,57 @@
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Form Tambah Pinjam</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Form Edit Pinjam</h1>
                     </div>
 
-                    <!-- Form Tambah Pinjam -->
-                    <form action="<?= base_url('pinjam/add_pinjam'); ?>" method="post" enctype="multipart/form-data">
+                    <!-- Form Edit Pinjam -->
+                    <form action="<?= base_url('pinjam/edit_pinjam'); ?>" method="post" enctype="multipart/form-data">
+
+                        <input type="hidden" class="form-control" id="kodePinjamEdit" name="kode-pinjam" value="<?= $pinjam->kode_pinjam ?>" autocomplete="off" required>
+
                         <div class="form-group row">
-                            <label for="kodePinjamAdd" class="col-sm-2 col-form-label">Kode Pinjam</label>
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" id="kodePinjamAdd" name="kode-pinjam" autocomplete="off" required>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="idKaryawanAdd" class="col-sm-2 col-form-label">Id Karyawan</label>
+                            <label for="idKaryawanEdit" class="col-sm-2 col-form-label">Id Karyawan</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="idKaryawanAdd" name="id-karyawan" autocomplete="off" required>
+                                <input type="text" class="form-control" id="idKaryawanEdit" name="id-karyawan" value="<?= $pinjam->id_karyawan ?>" autocomplete="off" required>
                             </div>
                             <div class="col-sm-1">
                                 <a class="btn btn-secondary w-100" data-toggle="modal" data-target="#displayKaryawanModal">Pilih...</a>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="namaKaryawanAdd" class="col-sm-2 col-form-label">Nama Karyawan</label>
+                            <label for="namaKaryawanEdit" class="col-sm-2 col-form-label">Nama Karyawan</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" id="namaKaryawanAdd" name="nama-karyawan" autocomplete="off" required>
+                                <input type="text" class="form-control" id="namaKaryawanEdit" name="nama-karyawan" value="<?= $pinjam->nama_karyawan ?>" autocomplete="off" required>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="fileArsipAdd" class="col-sm-2 col-form-label">File Arsip</label>
+                            <label for="fileArsipEdit" class="col-sm-2 col-form-label">File Arsip</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="fileArsipAdd" name="file-arsip" autocomplete="off" required>
+                                <input type="text" class="form-control" id="fileArsipEdit" name="file-arsip" value="<?= $pinjam->file_arsip ?>" autocomplete="off" required>
                             </div>
                             <div class="col-sm-1">
                                 <a class="btn btn-secondary w-100" data-toggle="modal" data-target="#displayArsipModal">Pilih...</a>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="namaCustomerAdd" class="col-sm-2 col-form-label">Nama Customer</label>
+                            <label for="namaCustomerEdit" class="col-sm-2 col-form-label">Nama Customer</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" id="namaCustomerAdd" name="nama-customer" autocomplete="off" required>
+                                <input type="text" class="form-control" id="namaCustomerEdit" name="nama-customer" value="<?= $pinjam->nama_customer ?>" autocomplete="off" required>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="tanggalPinjamAdd" class="col-sm-2 col-form-label">Tanggal Pinjam</label>
+                            <label for="tanggalPinjamEdit" class="col-sm-2 col-form-label">Tanggal Pinjam</label>
                             <div class="col-sm-4">
-                                <input type="date" class="form-control" id="tanggalPinjamAdd" name="tanggal-pinjam" autocomplete="off" required>
+                                <input type="date" class="form-control" id="tanggalPinjamEdit" name="tanggal-pinjam" value="<?= $pinjam->tgl_pinjam ?>" autocomplete="off" required>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="durasiAdd" class="col-sm-2 col-form-label">Durasi</label>
+                            <label for="durasiEdit" class="col-sm-2 col-form-label">Durasi</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="durasiAdd" name="durasi" autocomplete="off" required>
-                                <small id="durasiAddHelp" class="form-text text-muted">(durasi dalam hari)</small>
+                                <input type="text" class="form-control" id="durasiEdit" name="durasi" value="<?= $pinjam->durasi ?>" autocomplete="off" required>
+                                <small id="durasiEditHelp" class="form-text text-muted">(durasi dalam hari)</small>
                             </div>
                         </div>
 
@@ -69,7 +66,7 @@
                     </form>
              
 
-                    <!-- Add Modal Karyawan -->
+                    <!-- Edit Modal Karyawan -->
                     <div class="modal fade" id="displayKaryawanModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
@@ -117,9 +114,9 @@
                             </div>
                         </div>
                     </div>
-                    <!-- End of Add Modal Karyawan -->
+                    <!-- End of Edit Modal Karyawan -->
 
-                    <!-- Add Modal Arsip -->
+                    <!-- Edit Modal Arsip -->
                     <div class="modal fade" id="displayArsipModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
@@ -171,7 +168,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- End of Add Modal Arsip -->
+                    <!-- End of Edit Modal Arsip -->
                 </div>
             </div>
             <!-- End of Main Content -->
@@ -225,20 +222,20 @@
         let dd = ("0" + currentTime .getDate()).slice(-2);
         let mm = ("0" + (currentTime .getMonth() + 1)).slice(-2);
         let currentDate = currentTime .getFullYear()+"-"+(mm)+"-"+(dd);
-        
+
         $(document).ready(function(){
             $('.nav-dashboard').attr('class', 'nav-item nav-dashboard');
             $('.nav-pinjam').attr('class', 'nav-item nav-pinjam active');
 
-            // $('#kodePinjamAdd').val(uniqueKodePinjam);
-            $('#tanggalPinjamAdd').val(currentDate);
+            // $('#kodePinjamEdit').val(uniqueKodePinjam);
+            $('#tanggalPinjamEdit').val(currentDate);
 
             $(document).on('click', '#selectButtonKaryawan', function() {
                 const idKaryawan = $(this).data('id-karyawan');
                 const namaKaryawan = $(this).data('nama-karyawan');
                 
-                $('#idKaryawanAdd').val(idKaryawan);
-                $('#namaKaryawanAdd').val(namaKaryawan);
+                $('#idKaryawanEdit').val(idKaryawan);
+                $('#namaKaryawanEdit').val(namaKaryawan);
                 $('#displayKaryawanModal').modal('hide');
             });
 
@@ -246,9 +243,9 @@
                 const fileArsip = $(this).data('file-arsip');
                 const namaCustomer = $(this).data('nama-customer');
 
-                $('#fileArsipAdd').val(fileArsip);
-                $('#namaCustomerAdd').val(namaCustomer);
+                $('#fileArsipEdit').val(fileArsip);
+                $('#namaCustomerEdit').val(namaCustomer);
                 $('#displayArsipModal').modal('hide');
-            });
+            });;
         });
     </script>

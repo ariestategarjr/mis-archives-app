@@ -23,7 +23,7 @@ class Pinjam extends CI_Controller
     }
 
     public function add_pinjam_page() {
-        $data['karyawans'] = $this->m_karyawan->select_karyawan('tb_karyawan')->result();
+        $data['karyawans'] = $this->m_karyawan->get_karyawan('tb_karyawan')->result();
         $data['arsips'] = $this->m_arsip->get_arsip('tb_arsip')->result();
 
         $this->load->view('templates/header');
@@ -32,84 +32,74 @@ class Pinjam extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-//     public function edit_arsip_page($kode) {
-//         $where = array('kode_arsip' => $kode);
-//         $data['arsip'] = $this->db->get_where('tb_arsip', $where)->row();
-//         $data['customers'] = $this->m_customer->select_customer('tb_customer')->result();
-//         $data['bisnis_units'] = $this->m_bisnis_unit->get_bisnis_unit('tb_bisnis_unit')->result();
+    public function edit_pinjam_page($kode) {
+        $where = array('kode_pinjam' => $kode);
+        $data['pinjam'] = $this->db->get_where('tb_pinjam', $where)->row();
+        $data['karyawans'] = $this->m_karyawan->get_karyawan('tb_karyawan')->result();
+        $data['arsips'] = $this->m_arsip->get_arsip('tb_arsip')->result();
 
-//         $this->load->view('templates/header');
-//         $this->load->view('templates/sidebar');
-//         $this->load->view('v_arsip_edit', $data);
-//         $this->load->view('templates/footer');
-//     }
+        $this->load->view('templates/header');
+        $this->load->view('templates/sidebar');
+        $this->load->view('v_pinjam_edit', $data);
+        $this->load->view('templates/footer');
+    }
 
-//     public function add_arsip() {
-//         $kode_arsip = $this->input->post('kode-arsip');
-//         $nama_customer = $this->input->post('nama-customer');
-//         $bisnis_unit = $this->input->post('bisnis-unit');
-//         $tanggal_arsip = $this->input->post('tanggal-arsip');
-//         $file_arsip = $_FILES['file-arsip']['name'];
+    public function add_pinjam() {
+        $kode_pinjam = $this->input->post('kode-pinjam');
+        $id_karyawan = $this->input->post('id-karyawan');
+        $nama_karyawan = $this->input->post('nama-karyawan');
+        $file_arsip = $this->input->post('file-arsip');
+        $nama_customer = $this->input->post('nama-customer');
+        $tanggal_pinjam = $this->input->post('tanggal-pinjam');
+        $durasi = $this->input->post('durasi');
 
-//         if($file_arsip) {
-//             $config ['upload_path'] = './file_upload';
-//             $config ['allowed_types'] = 'pdf';
-
-//             $this->load->library('upload', $config);
-//             if(!$this->upload->do_upload('file-arsip')){
-//                 echo "File gagal diupload!";
-//             } else {
-//                 $file_arsip = $this->upload->data('file_name');
-//             }
-//         }
+        $tanggal_kembali = date('Y-m-d', strtotime("$tanggal_pinjam + $durasi days"));
         
-//         $data_arsip = array(
-//             'kode_arsip' => $kode_arsip,
-//             'nama_customer' => $nama_customer,
-//             'bisnis_unit' => $bisnis_unit,
-//             'tgl_arsip' => $tanggal_arsip,
-//             'file_arsip' => $file_arsip,
-//         );
+        $data_pinjam = array(
+            'kode_pinjam' => $kode_pinjam,
+            'id_karyawan' => $id_karyawan,
+            'nama_karyawan' => $nama_karyawan,
+            'file_arsip' => $file_arsip,
+            'nama_customer' => $nama_customer,
+            'tgl_pinjam' => $tanggal_pinjam,
+            'durasi' => $durasi,
+            'tgl_kembali' => $tanggal_kembali,
+        );
         
-//         $this->m_arsip->insert_arsip($data_arsip);
-//         redirect(base_url('arsip'));
-//     }
+        $this->m_pinjam->insert_pinjam($data_pinjam);
+        redirect(base_url('pinjam'));
+    }
 
-//     public function edit_arsip() {
-//         $kode_arsip = $this->input->post('kode-arsip');
+    public function edit_pinjam() {
+        $kode_pinjam = $this->input->post('kode-pinjam');
 
-//         $nama_customer = $this->input->post('nama-customer');
-//         $bisnis_unit = $this->input->post('bisnis-unit');
-//         $tanggal_arsip = $this->input->post('tanggal-arsip');
-//         $file_arsip = $_FILES['file-arsip']['name'];
+        $id_karyawan = $this->input->post('id-karyawan');
+        $nama_karyawan = $this->input->post('nama-karyawan');
+        $file_arsip = $this->input->post('file-arsip');
+        $nama_customer = $this->input->post('nama-customer');
+        $tanggal_pinjam = $this->input->post('tanggal-pinjam');
+        $durasi = $this->input->post('durasi');
 
-//         if($file_arsip) {
-//             $config ['upload_path'] = './file_upload';
-//             $config ['allowed_types'] = 'pdf';
-
-//             $this->load->library('upload', $config);
-//             if(!$this->upload->do_upload('file-arsip')){
-//                 echo "File gagal diupload!";
-//             } else {
-//                 $file_arsip = $this->upload->data('file_name');
-//             }
-//         }
+        $tanggal_kembali = date('Y-m-d', strtotime("$tanggal_pinjam + $durasi days"));
         
-//         $data_arsip = array(
-//             'nama_customer' => $nama_customer,
-//             'bisnis_unit' => $bisnis_unit,
-//             'tgl_arsip' => $tanggal_arsip,
-//             'file_arsip' => $file_arsip,
-//         );
+        $data_pinjam = array(
+            'kode_pinjam' => $kode_pinjam,
+            'id_karyawan' => $id_karyawan,
+            'nama_karyawan' => $nama_karyawan,
+            'file_arsip' => $file_arsip,
+            'nama_customer' => $nama_customer,
+            'tgl_pinjam' => $tanggal_pinjam,
+            'durasi' => $durasi,
+            'tgl_kembali' => $tanggal_kembali,
+        );
         
-//         $this->m_arsip->update_arsip($data_arsip, $kode_arsip);
-//         redirect(base_url('arsip'));
-//     }
+        $this->m_pinjam->update_pinjam($data_pinjam, $kode_pinjam);
+        redirect(base_url('pinjam'));
+    }
 
-//     public function delete_arsip() {
-//         $kode_arsip = $this->input->post('kode-arsip');
-//         // echo $kode_arsip;
-//         $this->m_arsip->delete_arsip($kode_arsip);
-//         redirect(base_url('arsip'));
-//     }
+    public function delete_pinjam() {
+        $kode_pinjam = $this->input->post('kode-pinjam');
+        $this->m_pinjam->delete_pinjam($kode_pinjam);
+        redirect(base_url('pinjam'));
+    }
 }

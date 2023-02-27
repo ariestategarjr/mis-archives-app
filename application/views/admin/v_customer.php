@@ -6,36 +6,38 @@
                     </button>
 
                     <!-- Table Customer -->
-                    <table class="table table-bordered" id="tableCustomer">
-                        <thead>                    
-                            <tr>
-                                <th>No</th>
-                                <th>Id Customer</th>
-                                <th>NIK</th>
-                                <th>Nama</th>
-                                <th>Tanggal Lahir</th>
-                                <th>Alamat</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $no = 1; ?>
-                            <?php foreach($customers as $customer) { ?>
-                            <tr>
-                                <td><?= $no++ ?></td>
-                                <td id="idCustomer"><?= $customer->id_customer ?></td>
-                                <td id="nikCustomer"><?= $customer->nik ?></td>
-                                <td id="nameCustomer"><?= $customer->nama_customer ?></td>
-                                <td id="dateCustomer"><?= $customer->tanggal_lahir ?></td>
-                                <td id="addressCustomer"><?= $customer->alamat ?></td>
-                                <td colspan="2">
-                                    <button type="button" class="btn btn-warning btn-sm" id="editButton" data-toggle="modal" data-target="#editModal<?= $customer->id_customer ?>">Edit</button>
-                                    <button type="button" class="btn btn-danger btn-sm" id="deleteButton" data-toggle="modal" data-target="#deleteModal<?= $customer->id_customer ?>">Hapus</button>
-                                </td>
-                            </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive-sm">
+                        <table class="table table-bordered table-hover" id="tableCustomer">
+                            <thead>                    
+                                <tr>
+                                    <th>No</th>
+                                    <th>Id Customer</th>
+                                    <th>NIK</th>
+                                    <th>Nama</th>
+                                    <th>Tanggal Lahir</th>
+                                    <th>Alamat</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $no = 1; ?>
+                                <?php foreach($customers as $customer) { ?>
+                                <tr>
+                                    <td><?= $no++ ?></td>
+                                    <td id="idCustomer"><?= $customer->id_customer ?></td>
+                                    <td id="nikCustomer"><?= $customer->nik ?></td>
+                                    <td id="nameCustomer"><?= $customer->nama_customer ?></td>
+                                    <td id="dateCustomer"><?= $customer->tanggal_lahir ?></td>
+                                    <td id="addressCustomer"><?= $customer->alamat ?></td>
+                                    <td colspan="2">
+                                        <button type="button" class="btn btn-warning btn-sm" id="editButton" data-toggle="modal" data-target="#editModal<?= $customer->id_customer ?>">Edit</button>
+                                        <button type="button" class="btn btn-danger btn-sm" id="deleteButton" data-toggle="modal" data-target="#deleteModal<?= $customer->id_customer ?>">Hapus</button>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>    
 
                     <!-- Add Modal Customer -->
                     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -159,7 +161,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Your Website 2023</span>
                     </div>
                 </div>
             </footer>

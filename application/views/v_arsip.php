@@ -3,8 +3,6 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Arsip</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                        <i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
 
                     <!-- Button trigger Add Modal Akun -->
@@ -13,42 +11,44 @@
                     </a>
 
                     <!-- Table Arsip -->
-                    <table class="table table-responsive" id="dataTables">
-                        <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Kode Arsip</th>
-                            <th>Nama Customer</th>
-                            <th>Bisnis Unit</th>
-                            <th>Tanggal Arsip</th>
-                            <th>File Arsip</th>
-                            <th>Aksi</th>
-                        </tr>
-                        </thead>
+                    <div class="table-responsive-sm">
+                        <table class="table table-bordered table-hover" id="dataTables">
+                            <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Kode Arsip</th>
+                                <th>Nama Customer</th>
+                                <th>Bisnis Unit</th>
+                                <th>Tanggal Arsip</th>
+                                <th>File Arsip</th>
+                                <th>Aksi</th>
+                            </tr>
+                            </thead>
 
-                        <tbody>
-                        <?php $no = 1; ?>
-                        <?php foreach($arsips as $arsip) { ?>
-                        <tr>
-                            <td><?= $no++; ?></td>
-                            <td><?= $arsip->kode_arsip ?></td>
-                            <td><?= $arsip->nama_customer ?></td>
-                            <td><?= $arsip->bisnis_unit ?></td>
-                            <td><?= $arsip->tgl_arsip ?></td>
-                            <td>
-                                <a href="<?= base_url(); ?>upload/<?= $arsip->file_arsip ?>" download><?= $arsip->file_arsip ?></a>
-                            </td>
-                            <td colspan="2">
-                                <a href="<?= base_url('arsip/edit_arsip_page/' . $arsip->kode_arsip); ?>" class="btn btn-warning" id="editButton">Edit</a>
-                                <button type="button" class="btn btn-danger" id="deleteButton" data-toggle="modal" data-target="#deleteModal<?= $arsip->kode_arsip ?>">Hapus</button>
-                            </td>
-                        </tr>
-                        <?php } ?>
-                        </tbody>
-                    </table>
+                            <tbody>
+                            <?php $no = 1; ?>
+                            <?php foreach($arsips as $arsip) { ?>
+                            <tr>
+                                <td><?= $no++; ?></td>
+                                <td><?= $arsip->kode_arsip ?></td>
+                                <td><?= $arsip->nama_customer ?></td>
+                                <td><?= $arsip->bisnis_unit ?></td>
+                                <td><?= $arsip->tgl_arsip ?></td>
+                                <td>
+                                    <a href="<?= base_url(); ?>upload/<?= $arsip->file_arsip ?>" target="_blank"><?= $arsip->file_arsip ?></a>
+                                </td>
+                                <td colspan="2">
+                                    <a href="<?= base_url('arsip/edit_arsip_page/' . $arsip->kode_arsip); ?>" class="btn btn-warning btn-sm" id="editButton">Edit</a>
+                                    <button type="button" class="btn btn-danger btn-sm" id="deleteButton" data-toggle="modal" data-target="#deleteModal<?= $arsip->kode_arsip ?>">Hapus</button>
+                                </td>
+                            </tr>
+                            <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
 
-                   <!-- Delete Modal Arsip -->
-                   <?php $no = 1; ?>
+                    <!-- Delete Modal Arsip -->
+                    <?php $no = 1; ?>
                     <?php foreach($arsips as $arsip) { $no++; ?>
                     <div class="modal fade" id="deleteModal<?= $arsip->kode_arsip ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -73,10 +73,7 @@
                         </div>
                     </div>
                     <?php } ?>
-                    <!-- End of Delete Modal Bisnis Unit -->
-
-
-         
+                    <!-- End of Delete Modal Arsip -->
             </div>
             <!-- End of Main Content -->
 

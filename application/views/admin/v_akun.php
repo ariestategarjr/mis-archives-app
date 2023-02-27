@@ -6,34 +6,36 @@
                     </button>
 
                     <!-- Table Akun -->
-                    <table class="table table-bordered" id="tableAkun">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Id Akun</th>
-                                <th>Username</th>
-                                <th>Password</th>
-                                <th>Status</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $no = 1; ?>
-                            <?php foreach($akuns as $akun) { ?>
-                            <tr>
-                                <td><?= $no++; ?></td>
-                                <td><?= $akun->id_akun ?></td>
-                                <td><?= $akun->username ?></td>
-                                <td><?= $akun->password ?></td>
-                                <td><?= $akun->status ?></td>
-                                <td colspan="2">
-                                    <button type="button" class="btn btn-warning" id="editButton" data-toggle="modal" data-target="#editModal<?= $akun->id_akun ?>">Edit</button>
-                                    <button type="button" class="btn btn-danger" id="deleteButton" data-toggle="modal" data-target="#deleteModal<?= $akun->id_akun ?>">Hapus</button>
-                                </td>
-                            </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive-sm">
+                        <table class="table table-bordered table-hover" id="tableAkun">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Id Akun</th>
+                                    <th>Username</th>
+                                    <th>Password</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $no = 1; ?>
+                                <?php foreach($akuns as $akun) { ?>
+                                <tr>
+                                    <td><?= $no++; ?></td>
+                                    <td><?= $akun->id_akun ?></td>
+                                    <td><?= $akun->username ?></td>
+                                    <td><?= $akun->password ?></td>
+                                    <td><?= $akun->status ?></td>
+                                    <td colspan="2">
+                                        <button type="button" class="btn btn-warning btn-sm" id="editButton" data-toggle="modal" data-target="#editModal<?= $akun->id_akun ?>">Edit</button>
+                                        <button type="button" class="btn btn-danger btn-sm" id="deleteButton" data-toggle="modal" data-target="#deleteModal<?= $akun->id_akun ?>">Hapus</button>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
 
                     <!-- Add Modal Akun -->
                     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -160,7 +162,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Your Website 2023</span>
                     </div>
                 </div>
             </footer>

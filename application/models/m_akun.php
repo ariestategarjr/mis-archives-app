@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class M_akun extends CI_Model
 {
     public function get_akun($table) {
-        return $this->db->get($table);
+        return $this->db->order_by('id_akun', 'desc')->get($table);
     }
 
     public function insert_akun($table, $data) {

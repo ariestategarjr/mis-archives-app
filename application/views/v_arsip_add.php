@@ -3,12 +3,10 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Form Tambah Arsip</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                        <i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
 
                     <!-- Form Tambah Arsip -->
-                    <form action="<?php echo base_url('arsip/add_arsip'); ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?= base_url('arsip/add_arsip'); ?>" method="post" enctype="multipart/form-data">
                         <div class="form-group row">
                             <label for="kodeArsipAdd" class="col-sm-2 col-form-label">Kode Arsip</label>
                             <div class="col-sm-5">
@@ -27,11 +25,11 @@
                         <div class="form-group row">
                             <label for="bisnisUnitArsipAdd " class="col-sm-2 col-form-label">Bisnis Unit</label>
  
-                            <select class="form-control col-sm-5 ml-2" id="bisnisUnitArsipAdd" name="bisnis-unit" required>
-                                <option>--Pilih--</option>
+                            <select class="form-control col-sm-5 ml-2" id="bisnisUnitArsipAdd" name="bisnis-unit" autocomplete="off" required>
+                                <option value="">--Pilih--</option>
                                 <?php foreach($bisnis_units as $bisnis_unit) { ?>
-                                <option value="<?php echo $bisnis_unit->nama_bisnis_unit ?>">
-                                    <?php echo $bisnis_unit->nama_bisnis_unit ?>
+                                <option value="<?= $bisnis_unit->nama_bisnis_unit ?>">
+                                    <?= $bisnis_unit->nama_bisnis_unit ?>
                                 </option>
                                 <?php } ?>
                             </select>
@@ -46,7 +44,7 @@
                             <label for="fileArsipAdd" class="col-sm-2 col-form-label">File Arsip</label>
                             <div class="col-sm-4">
                                 <input type="file" id="fileArsipAdd" name="file-arsip" accept=".pdf" autocomplete="off" required>
-                                <p>Maximal 10MB</p>
+                                <small id="fileArsipAddHelp" class="form-text text-muted">Maksimal 10MB</small>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -58,39 +56,7 @@
                         </div>
                     </form>
 
-                    <!-- <table class="table table-responsive" id="dataTables">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Id Customer</th>
-                                <th>NIK</th>
-                                <th>Nama Customer</th>
-                                <th>Alamat</th>
-                                <th>Tanggal Lahir</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <?php $no = 1; ?>
-                            <?php foreach($customers as $customer) { ?>
-                            <tr>
-                                <td><?php echo $no++ ?></td>
-                                <td><?php echo $customer->id_customer ?></td>
-                                <td><?php echo $customer->nik ?></td>
-                                <td><?php echo $customer->nama_customer ?></td>
-                                <td><?php echo $customer->alamat ?></td>
-                                <td><?php echo $customer->tanggal_lahir ?></td>
-                                <td>
-                                    <a>Select</a>
-                                </td>
-                            </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table> -->
-             
-
-                    <!-- Add Modal Akun -->
+                    <!-- Customer Modal -->
                     <div class="modal fade" id="displayCustomerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
@@ -101,44 +67,46 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <table class="table table-responsive" id="dataTables">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Id Customer</th>
-                                                <th>NIK</th>
-                                                <th>Nama Customer</th>
-                                                <th>Alamat</th>
-                                                <th>Tanggal Lahir</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php $no = 1; ?>
-                                            <?php foreach($customers as $customer) { ?>
-                                            <tr>
-                                                <td><?php echo $no++; ?></td>
-                                                <td><?php echo $customer->id_customer ?></td>
-                                                <td><?php echo $customer->nik ?></td>
-                                                <td><?php echo $customer->nama_customer ?></td>
-                                                <td><?php echo $customer->alamat ?></td>
-                                                <td><?php echo $customer->tanggal_lahir ?></td>
-                                                <td>
-                                                    <button type="button" class="btn btn-primary" id="selectButton" 
-                                                    data-toggle="modal" data-target="#selectModal<?php echo $customer->id_customer ?>"
-                                                    data-nama-customer="<?php echo $customer->nama_customer ?>">Select
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <?php } ?>
-                                        </tbody>
-                                    </table>
+                                    <div class="table-responsive-sm">
+                                        <table class="table table-bordered table-hover" id="dataTables">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Id Customer</th>
+                                                    <th>NIK</th>
+                                                    <th>Nama Customer</th>
+                                                    <th>Alamat</th>
+                                                    <th>Tanggal Lahir</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $no = 1; ?>
+                                                <?php foreach($customers as $customer) { ?>
+                                                <tr>
+                                                    <td><?= $no++; ?></td>
+                                                    <td><?= $customer->id_customer ?></td>
+                                                    <td><?= $customer->nik ?></td>
+                                                    <td><?= $customer->nama_customer ?></td>
+                                                    <td><?= $customer->alamat ?></td>
+                                                    <td><?= $customer->tanggal_lahir ?></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary" id="selectButton" 
+                                                        data-toggle="modal" data-target="#selectModal<?= $customer->id_customer ?>"
+                                                        data-nama-customer="<?= $customer->nama_customer ?>">Select
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                                 <div class="modal-footer"></div>                                
                             </div>
                         </div>
                     </div>
-                    <!-- End of Add Modal Akun -->
+                    <!-- End of Customer Modal -->
                 </div>
             </div>
             <!-- End of Main Content -->
@@ -147,7 +115,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Your Website 2023</span>
                     </div>
                 </div>
             </footer>
@@ -178,15 +146,15 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="<?php echo base_url('login/log_out') ?>">Logout</a>
+                    <a class="btn btn-primary" href="<?= base_url('login/log_out') ?>">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script> -->
+    <script src="<?= base_url() ?>/assets/vendor/jquery/jquery.min.js"></script> -->
     <script>
-        let uniqueKodeArsip = "AP" + Math.random().toString(8).slice(4);
+        // let uniqueKodeArsip = "AP" + Math.random().toString(8).slice(4);
 
         let currentTime = new Date();
         let dd = ("0" + currentTime .getDate()).slice(-2);
@@ -206,7 +174,7 @@
             });
 
             // set unique kode_arsip 
-            $('#kodeArsipAdd').val(uniqueKodeArsip);
+            // $('#kodeArsipAdd').val(uniqueKodeArsip);
 
             // set default date value 
             $('#tanggalArsipAdd').val(currentDate);

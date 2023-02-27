@@ -3,32 +3,34 @@
                     <!-- Button trigger Add Modal Karyawan -->
                     <button class="btn btn-success" data-toggle="modal" data-target="#addModal">Tambah Karyawan Baru</button>
                     
-                    <table class="table table-bordered" id="tableKaryawan">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Id Karyawan</th>
-                                <th>Nama Karyawan</th>
-                                <th>Jabatan</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $no = 1; ?>
-                            <?php foreach($karyawans as $karyawan) { ?>
-                            <tr>
-                                <td><?= $no++; ?></td>
-                                <td><?= $karyawan->id_karyawan ?></td>
-                                <td><?= $karyawan->nama_karyawan ?></td>
-                                <td><?= $karyawan->jabatan ?></td>
-                                <td colspan="2">
-                                    <button type="button" class="btn btn-warning" id="editButton" data-toggle="modal" data-target="#editModal<?= $karyawan->id_karyawan ?>">Edit</button>
-                                    <button type="button" class="btn btn-danger" id="deleteButton" data-toggle="modal" data-target="#deleteModal<?= $karyawan->id_karyawan ?>">Hapus</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <?php } ?>
-                    </table>
+                    <div class="table-responsive-sm">
+                        <table class="table table-bordered table-hover" id="tableKaryawan">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Id Karyawan</th>
+                                    <th>Nama Karyawan</th>
+                                    <th>Jabatan</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $no = 1; ?>
+                                <?php foreach($karyawans as $karyawan) { ?>
+                                <tr>
+                                    <td><?= $no++; ?></td>
+                                    <td><?= $karyawan->id_karyawan ?></td>
+                                    <td><?= $karyawan->nama_karyawan ?></td>
+                                    <td><?= $karyawan->jabatan ?></td>
+                                    <td colspan="2">
+                                        <button type="button" class="btn btn-warning btn-sm" id="editButton" data-toggle="modal" data-target="#editModal<?= $karyawan->id_karyawan ?>">Edit</button>
+                                        <button type="button" class="btn btn-danger btn-sm" id="deleteButton" data-toggle="modal" data-target="#deleteModal<?= $karyawan->id_karyawan ?>">Hapus</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <?php } ?>
+                        </table>
+                    </div>
 
                     <!-- Add Modal Karyawan -->
                     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -136,7 +138,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Your Website 2023</span>
                     </div>
                 </div>
             </footer>

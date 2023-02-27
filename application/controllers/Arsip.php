@@ -23,7 +23,7 @@ class Arsip extends CI_Controller
     }
 
     public function add_arsip_page() {
-        $data['customers'] = $this->m_customer->select_customer('tb_customer')->result();
+        $data['customers'] = $this->m_customer->get_customer('tb_customer')->result();
         $data['bisnis_units'] = $this->m_bisnis_unit->get_bisnis_unit('tb_bisnis_unit')->result();
 
         $this->load->view('templates/header');
@@ -35,7 +35,7 @@ class Arsip extends CI_Controller
     public function edit_arsip_page($kode) {
         $where = array('kode_arsip' => $kode);
         $data['arsip'] = $this->db->get_where('tb_arsip', $where)->row();
-        $data['customers'] = $this->m_customer->select_customer('tb_customer')->result();
+        $data['customers'] = $this->m_customer->get_customer('tb_customer')->result();
         $data['bisnis_units'] = $this->m_bisnis_unit->get_bisnis_unit('tb_bisnis_unit')->result();
 
         $this->load->view('templates/header');
@@ -79,6 +79,9 @@ class Arsip extends CI_Controller
 
     public function edit_arsip() {
         $kode_arsip = $this->input->post('kode-arsip');
+        $data['arsip'] = $this->db->get_where('tb_arsip', array('kode_arsip' => $kode_arsip))->row();
+
+        unlink(FCPATH."/upload/".$data['arsip']->file_arsip);
 
         $nama_customer = $this->input->post('nama-customer');
         $bisnis_unit = $this->input->post('bisnis-unit');
@@ -86,10 +89,13 @@ class Arsip extends CI_Controller
         $file_arsip = $_FILES['file-arsip']['name'];
 
         if($file_arsip) {
-            $config ['upload_path'] = './file_upload';
+            $config ['upload_path'] = './upload';
             $config ['allowed_types'] = 'pdf';
+            $config['overwrite'] = true;
+            $config['max_size'] = 10024;
 
             $this->load->library('upload', $config);
+
             if(!$this->upload->do_upload('file-arsip')){
                 echo "File gagal diupload!";
             } else {
@@ -112,7 +118,8 @@ class Arsip extends CI_Controller
         $kode_arsip = $this->input->post('kode-arsip');
         $data['arsip'] = $this->db->get_where('tb_arsip', array('kode_arsip' => $kode_arsip))->row();
 
-        unlink(FCPATH."/upload/" . $data['arsip']->file_arsip);
+        unlink(FCPATH."/upload/".$data['arsip']->file_arsip);
+
         $this->m_arsip->delete_arsip($kode_arsip);
         redirect(base_url('arsip'));
     }
